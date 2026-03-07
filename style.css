@@ -1,0 +1,437 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f5f5f5;
+}
+
+header {
+  background: #003366;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  background: #0055a5;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.hero {
+  text-align: center;
+  padding: 40px;
+  background: #e6f2ff;
+}
+
+.hero img {
+  width: 80%;
+  max-width: 800px;
+  border-radius: 10px;
+}
+
+.hero h2 {
+  margin-top: 20px;
+  color: #003366;
+}
+
+.buttons a {
+  margin: 10px;
+  padding: 10px 20px;
+  background: #003366;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+footer {
+  background: #003366;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+.about {
+  background: #ffffff;
+  padding: 40px;
+  text-align: center;
+}
+
+.about h2 {
+  color: #003366;
+  margin-bottom: 20px;
+}
+
+.about-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.about-content div {
+  width: 30%;
+  min-width: 250px;
+  margin: 20px;
+  text-align: left;
+}
+
+.about-content img {
+  width: 100%;
+  max-width: 200px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.about-content h3 {
+  color: #0055a5;
+  margin-bottom: 10px;
+}
+
+.about-content p, .about-content ul {
+  font-size: 14px;
+  line-height: 1.6;
+}
+.academics {
+  background: #f9f9f9;
+  padding: 40px;
+  text-align: center;
+}
+
+.academics h2 {
+  color: #003366;
+  margin-bottom: 20px;
+}
+
+.academics p {
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+.courses {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.course {
+  background: #ff9933; /* saffron tone */
+  color: white;
+  font-weight: bold;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 8px;
+  width: 120px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.course:hover {
+  background: #003366;
+  cursor: pointer;
+}
+.admissions {
+  background: #ffffff;
+  padding: 40px;
+  text-align: center;
+}
+
+.admissions h2 {
+  color: #003366;
+  margin-bottom: 20px;
+}
+
+.admissions p {
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+.admission-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.admission-item {
+  margin: 10px;
+}
+
+.admission-item a {
+  display: block;
+  padding: 15px 25px;
+  background: #ff9933; /* saffron tone */
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.admission-item a:hover {
+  background: #003366;
+}
+.examinations {
+  background: #e6f2ff;
+  padding: 40px;
+  text-align: center;
+}
+
+.examinations h2 {
+  color: #003366;
+  margin-bottom: 20px;
+}
+
+.examinations p {
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+.exam-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.exam-item {
+  margin: 10px;
+}
+
+.exam-item a {
+  display: block;
+  padding: 15px 25px;
+  background: #003366;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.exam-item a:hover {
+  background: #ff9933;
+}
+.facilities {
+  background: #ffffff;
+  padding: 40px;
+  text-align: center;
+}
+
+.facilities h2 {
+  color: #003366;
+  margin-bottom: 20px;
+}
+
+.facilities p {
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+.facility-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.facility {
+  width: 220px;
+  margin: 15px;
+  text-align: center;
+}
+
+.facility img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.facility h3 {
+  color: #0055a5;
+  margin-bottom: 8px;
+}
+
+.facility p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+.gallery {
+  background: #f9f9f9;
+  padding: 40px;
+  text-align: center;
+}
+
+.gallery h2 {
+  color: #003366;
+  margin-bottom: 20px;
+}
+
+.gallery p {
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+.gallery-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.gallery-item {
+  width: 220px;
+  margin: 15px;
+  text-align: center;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: 0.3s;
+}
+
+.gallery-item img:hover {
+  transform: scale(1.05);
+}
+
+.gallery-item h3 {
+  color: #0055a5;
+  font-size: 14px;
+}
+.notices {
+  background: #ffffff;
+  padding: 40px;
+  text-align: center;
+}
+
+.notices h2 {
+  color: #003366;
+  margin-bottom: 20px;
+}
+
+.notices p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.notice-board {
+  background: #e6f2ff;
+  border: 1px solid #003366;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.notice-board a {
+  color: #003366;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.notice-board a:hover {
+  color: #ff9933;
+}
+
+.view-all a {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #003366;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.view-all a:hover {
+  background: #ff9933;
+}
+.contact {
+  background: #e6f2ff;
+  padding: 40px;
+  text-align: center;
+}
+
+.contact h2 {
+  color: #003366;
+  margin-bottom: 20px;
+}
+
+.contact-info p {
+  font-size: 15px;
+  margin: 8px 0;
+}
+
+.map {
+  margin: 20px 0;
+}
+
+.social-links a {
+  color: #003366;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+.social-links a:hover {
+  color: #ff9933;
+}
+footer {
+  background: #003366;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+.admission-form {
+  background: #f9f9f9;
+  padding: 40px;
+  max-width: 600px;
+  margin: auto;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.admission-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.admission-form label {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #003366;
+}
+
+.admission-form input, 
+.admission-form select, 
+.admission-form textarea {
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.admission-form button {
+  margin-top: 20px;
+  padding: 12px;
+  background: #003366;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.admission-form button:hover {
+  background: #ff9933;
+}

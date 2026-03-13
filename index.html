@@ -2,29 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Kashiram Memorial College, Manpur Baheri</title>
-  <!-- Basic SEO Meta Tags -->
-<title>Kashiram Memorial College Bareilly – Admissions, Courses & Contact</title>
-<meta name="description" content="Kashiram Memorial College Bareilly offers admissions in diverse courses with experienced faculty and modern facilities. Apply online and explore our academic programs.">
-<meta name="keywords" content="Kashiram Memorial College, KRMC Bareilly, Bareilly college admissions, KRMC courses, Uttar Pradesh education">
+  <title>Kashiram Memorial College Bareilly – Admissions, Courses & Contact</title>
+  <meta name="description" content="Kashiram Memorial College Bareilly offers admissions in diverse courses with experienced faculty and modern facilities. Apply online and explore our academic programs.">
+  <meta name="keywords" content="Kashiram Memorial College, KRMC Bareilly, Bareilly college admissions, KRMC courses, Uttar Pradesh education">
 
-<!-- Open Graph for Social Media -->
-<meta property="og:title" content="Kashiram Memorial College Bareilly">
-<meta property="og:description" content="Explore admissions, courses, and faculty at Kashiram Memorial College Bareilly. Apply online today.">
-<meta property="og:url" content="https://krmc.org.in/">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://krmc.org.in/images/college-building.jpg">
+  <!-- Open Graph for Social Media -->
+  <meta property="og:title" content="Kashiram Memorial College Bareilly">
+  <meta property="og:description" content="Explore admissions, courses, and faculty at Kashiram Memorial College Bareilly. Apply online today.">
+  <meta property="og:url" content="https://krmc.org.in/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://krmc.org.in/images/college-building.jpg">
+
+  <!-- Responsive Viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- External CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Header -->
   <header>
     <div class="logo">
-     <img src=" images/logo.png" alt="College Logo"style="width:120px;hight:auto">
-      <h1>Kashiram Memorial College</h1>
-      <p>Manpur Baheri (Bareilly)</p>
+      <img src="images/logo.png" alt="College Logo">
+      <div>
+        <h1>Kashiram Memorial College</h1>
+        <p>Manpur Baheri (Bareilly)</p>
+      </div>
     </div>
+    <!-- Toggle Button -->
+    <span class="menu-toggle" onclick="toggleMenu()">☰</span>
     <nav>
-      <ul>
+      <ul id="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="academics.html">Academics</a></li>
@@ -38,6 +46,7 @@
     </nav>
   </header>
 
+  <!-- Hero Section -->
   <section class="hero">
     <img src="campus.jpg" alt="College Campus">
     <h2>Education for Excellence and Values</h2>
@@ -48,16 +57,22 @@
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
     <p>Contact: +91-9411006547 | Email: info@kashiramcollege.in</p>
-  
-  <footer>
-  <div class="container">
-    <p>© 2026 Kashiram Memorial College, Manpur Baheri (Bareilly)</p>
-    <p>Developed by Digital Architect Team</p>
-  </div>
-</footer>
-</footer>
-</body>
+    <div class="container">
+      <p>© 2026 Kashiram Memorial College, Manpur Baheri (Bareilly)</p>
+      <p>Developed by Digital Architect Team</p>
+    </div>
+  </footer>
 
+  <!-- Toggle Menu Script -->
+  <script>
+    function toggleMenu() {
+      document.getElementById("nav-links").classList.toggle("show");
+    }
+  </script>
+</body>
 </html>
+
+

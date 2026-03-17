@@ -1,109 +1,136 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Kashiram Memorial College, Manpur Baheri</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-    <div class="logo">
-     <img src=" images/logo.png" alt="College Logo"style="width:120px;hight:auto">
-      <h1>Kashiram Memorial College</h1>
-      <p>Manpur Baheri (Bareilly)</p>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="academics.html">Academics</a></li>
-        <li><a href="admission.html">Admissions</a></li>
-        <li><a href="examination.html">Examinations</a></li>
-        <li><a href="facility.html">Facilities</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="notice.html">Notices</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header><section class="gallery">
-  <div class="container">
-    <h2>Gallery</h2>
-    <p>Explore moments from our campus life and events.</p>
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <img src="annual-function.jpg" alt="Annual Function">
-        <h3>Annual Function</h3>
-      </div>
-      <div class="gallery-item">
-        <img src="sports-day.jpg" alt="Sports Day">
-        <h3>Sports Day</h3>
-      </div>
-      <div class="gallery-item">
-        <img src="cultural-program.jpg" alt="Cultural Program">
-        <h3>Cultural Program</h3>
-      </div>
-      <div class="gallery-item">
-        <img src="campus-view.jpg" alt="Campus View">
-        <h3>Campus Highlights</h3>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>College Sliding Gallery</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    * {margin:0; padding:0; box-sizing:border-box;}
-    body {font-family:Arial, sans-serif; background:#f4f4f4;}
-    .gallery-container {
-      width:80%;
-      margin:50px auto;
-      overflow:hidden;
-      border-radius:10px;
-      box-shadow:0 4px 10px rgba(0,0,0,0.2);
+    /* Theme colors matching home page */
+    .navbar-custom {
+      background-color: #004080; /* Deep blue */
     }
-    .slides {
-      display:flex;
-      width:500%;
-      animation:slide 20s infinite;
+    .navbar-custom .nav-link {
+      color: #fff;
     }
-    .slides img {
-      width:100%;
-      border-radius:10px;
+    .navbar-custom .nav-link:hover {
+      color: #ffd700; /* Golden hover */
     }
-    @keyframes slide {
-      0% {margin-left:0;}
-      20% {margin-left:0;}
-      25% {margin-left:-100%;}
-      45% {margin-left:-100%;}
-      50% {margin-left:-200%;}
-      70% {margin-left:-200%;}
-      75% {margin-left:-300%;}
-      95% {margin-left:-300%;}
-      100% {margin-left:-400%;}
+    footer {
+      background-color: #004080;
+      color: #fff;
+    }
+    .gallery-item img {
+      width: 100%;
+      border-radius: 8px;
+      transition: transform 0.3s;
+    }
+    .gallery-item img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
   </style>
 </head>
 <body>
-  <div class="gallery-container">
-    <div class="slides">
-      <img src="campus1.jpg" alt="College Campus">
-      <img src="event1.jpg" alt="Annual Function">
-      <img src="library.jpg" alt="Library">
-      <img src="students.jpg" alt="Students Activity">
-      <img src="images/smartphone distribution.jpg" alt="Smartphone distribution">
+  <!-- Responsive Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-custom shadow-sm">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center text-white" href="index.html">
+        <img src="images/logo.png" alt="College Logo" style="width:60px;height:auto;" class="me-2">
+        <div>
+          <h1 class="h6 mb-0">Kashiram Memorial College</h1>
+          <small>Manpur Baheri (Bareilly)</small>
+        </div>
+      </a>
+      <!-- Toggle button -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Collapsible menu -->
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="academics.html">Academics</a></li>
+          <li class="nav-item"><a class="nav-link" href="admission.html">Admissions</a></li>
+          <li class="nav-item"><a class="nav-link" href="examination.html">Examinations</a></li>
+          <li class="nav-item"><a class="nav-link" href="facility.html">Facilities</a></li>
+          <li class="nav-item"><a class="nav-link active" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="notice.html">Notices</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
       </div>
     </div>
-  </div>
-</section>
-<footer>
-    <p>Contact: +91-9411006547 | Email: info@kashiramcollege.in</p>
-  
-  <footer>
-  <div class="container">
-    <p>© 2026 Kashiram Memorial College, Manpur Baheri (Bareilly)</p>
-    <p>Developed by Digital Architect Team</p>
-  </div>
-</footer>
-</footer>
+  </nav>
+
+  <!-- Gallery Section -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="mb-4">Gallery</h2>
+      <p class="lead">Explore moments from our campus life and events.</p>
+      <div class="row g-4">
+        <div class="col-md-3 col-sm-6 gallery-item">
+          <img src="annual-function.jpg" alt="Annual Function">
+          <h6 class="mt-2 text-center">Annual Function</h6>
+        </div>
+        <div class="col-md-3 col-sm-6 gallery-item">
+          <img src="sports-day.jpg" alt="Sports Day">
+          <h6 class="mt-2 text-center">Sports Day</h6>
+        </div>
+        <div class="col-md-3 col-sm-6 gallery-item">
+          <img src="cultural-program.jpg" alt="Cultural Program">
+          <h6 class="mt-2 text-center">Cultural Program</h6>
+        </div>
+        <div class="col-md-3 col-sm-6 gallery-item">
+          <img src="campus-view.jpg" alt="Campus View">
+          <h6 class="mt-2 text-center">Campus Highlights</h6>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sliding Gallery -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <h3 class="mb-4">Highlights</h3>
+      <div id="carouselGallery" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="campus1.jpg" class="d-block w-100" alt="College Campus">
+          </div>
+          <div class="carousel-item">
+            <img src="event1.jpg" class="d-block w-100" alt="Annual Function">
+          </div>
+          <div class="carousel-item">
+            <img src="library.jpg" class="d-block w-100" alt="Library">
+          </div>
+          <div class="carousel-item">
+            <img src="students.jpg" class="d-block w-100" alt="Students Activity">
+          </div>
+          <div class="carousel-item">
+            <img src="images/smartphone distribution.jpg" class="d-block w-100" alt="Smartphone Distribution">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselGallery" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselGallery" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-3">
+    <div class="container">
+      <p>Contact: +91-9411006547 | Email: info@kashiramcollege.in</p>
+      <p>© 2026 Kashiram Memorial College, Manpur Baheri (Bareilly)</p>
+      <p>Developed by Digital Architect Team</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

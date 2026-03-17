@@ -16,35 +16,96 @@
   <!-- Responsive Viewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- External CSS -->
-  <link rel="stylesheet" href="style.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .navbar-custom {
+      background-color: #004080;
+    }
+    .navbar-custom .nav-link { color: #fff; }
+    .navbar-custom .nav-link:hover { color: #ffd700; }
+
+    .hero {
+      position: relative;
+      text-align: center;
+      color: #fff;
+    }
+    .hero img {
+      width: 100%;
+      height: auto;
+      filter: brightness(65%);
+    }
+    .hero h2 {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2rem;
+      font-weight: bold;
+      background: rgba(0,0,0,0.5);
+      padding: 10px 20px;
+      border-radius: 8px;
+    }
+    .hero .buttons {
+      position: absolute;
+      bottom: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .hero .buttons a {
+      padding: 10px 20px;
+      background: #ffd700;
+      color: #004080;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .hero .buttons a:hover {
+      background: #004080;
+      color: #fff;
+    }
+    footer {
+      background-color: #004080;
+      color: #fff;
+      text-align: center;
+      padding: 15px 0;
+    }
+  </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="logo">
-      <img src="images/logo.png" alt="College Logo">
-      <div>
-        <h1>Kashiram Memorial College</h1>
-        <p>Manpur Baheri (Bareilly)</p>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-custom shadow-sm">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center text-white" href="index.html">
+        <img src="images/logo.png" alt="College Logo" style="width:60px;height:auto;" class="me-2">
+        <div>
+          <h1 class="h6 mb-0">Kashiram Memorial College</h1>
+          <small>Manpur Baheri (Bareilly)</small>
+        </div>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="academics.html">Academics</a></li>
+          <li class="nav-item"><a class="nav-link" href="admission.html">Admissions</a></li>
+          <li class="nav-item"><a class="nav-link" href="examination.html">Examinations</a></li>
+          <li class="nav-item"><a class="nav-link" href="facility.html">Facilities</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="notice.html">Notices</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
       </div>
     </div>
-    <!-- Toggle Button -->
-    <span class="menu-toggle" onclick="toggleMenu()">☰</span>
-    <nav>
-      <ul id="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="academics.html">Academics</a></li>
-        <li><a href="admission.html">Admissions</a></li>
-        <li><a href="examination.html">Examinations</a></li>
-        <li><a href="facility.html">Facilities</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="notice.html">Notices</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+  </nav>
 
   <!-- Hero Section -->
   <section class="hero">
@@ -66,13 +127,7 @@
     </div>
   </footer>
 
-  <!-- Toggle Menu Script -->
-  <script>
-    function toggleMenu() {
-      document.getElementById("nav-links").classList.toggle("show");
-    }
-  </script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
-

@@ -88,10 +88,42 @@
     </div>
   </section>
 
-  <footer>
-    <p>© 2026 Kashiram Memorial College, Manpur Baheri (Bareilly)</p>
-    <p style="font-size: 12px; margin-top: 10px;">Developed by Digital Architect Team</p>
+ <footer>
+    <div class="footer-content">
+      <div>
+        <h3>Contact Info</h3>
+        <p><i class="fas fa-phone"></i> +91-9411006547</p>
+        <p><i class="fas fa-envelope"></i> info@kashiramcollege.in</p>
+        <p><i class="fas fa-map-marker-alt"></i> Manpur, Baheri, Bareilly</p>
+      </div>
+      <div>
+        <h3>Quick Links</h3>
+        <p><a href="admission.html" style="color: #ccc; text-decoration:none;">How to Apply</a></p>
+        <p><a href="notice.html" style="color: #ccc; text-decoration:none;">College Notices</a></p>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>© 2026 Kashiram Memorial College, Manpur Baheri (Bareilly)</p>
+      <p>Developed by Digital Architect Team</p>
+    </div>
   </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("nav-links");
+      menu.classList.toggle("show");
+      
+      // Icon change logic
+      const icon = document.querySelector(".menu-toggle i");
+      if(menu.classList.contains("show")) {
+        icon.classList.replace("fa-bars", "fa-times");
+      } else {
+        icon.classList.replace("fa-times", "fa-bars");
+      }
+    }
+  </script>
+</body>
+</html>
 
   <script>
     function toggleMenu() {

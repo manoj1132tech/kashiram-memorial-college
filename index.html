@@ -135,17 +135,118 @@
     </nav>
   </header>
 
- <div class="breaking-news-container" style="background: #fff; border-bottom: 3px solid #ffcc00; display: flex; align-items: center; overflow: hidden; height: 45px;">
-    <div style="background: #cc0000; color: #fff; padding: 0 20px; height: 100%; display: flex; align-items: center; font-weight: bold; font-size: 0.9rem; z-index: 10; white-space: nowrap; box-shadow: 5px 0 10px rgba(0,0,0,0.2);">
-        LATEST UPDATES
+ <div class="news-ticker-container">
+    <div class="ticker-label">LATEST UPDATES</div>
+    <div class="ticker-wrapper">
+        <div class="ticker-content">
+            <a href="pdf/admission-form-2026.pdf" target="_blank" class="ticker-item">
+                <i class="fas fa-file-pdf"></i> 📢 Click here to Download Admission Form (Session 2026-27)
+            </a>
+            
+            <a href="https://mjpru.ac.in" target="_blank" class="ticker-item">
+                <i class="fas fa-external-link-alt"></i> 📢 MJPRU Exam Portal: Fill your BA/BSc Semester Forms here.
+            </a>
+
+            <a href="notice.html" class="ticker-item">
+                <i class="fas fa-bullhorn"></i> 📢 College will remain closed from 24th to 28th March for Holi.
+            </a>
+
+            <a href="pdf/admission-form-2026.pdf" target="_blank" class="ticker-item">
+                <i class="fas fa-file-pdf"></i> 📢 Click here to Download Admission Form (Session 2026-27)
+            </a>
+        </div>
     </div>
-    
-    <marquee behavior="scroll" direction="left" scrollamount="6" onmouseover="this.stop();" onmouseout="this.start();" style="font-family: 'Poppins', sans-serif; font-size: 1rem; color: #003366; font-weight: 600; cursor: pointer; line-height: 45px;">
-        <span style="margin-right: 50px;">📢 Admissions for Session 2026-27 are now OPEN! Visit the campus for details.</span>
-        <span style="margin-right: 50px;">📢 B.A. & B.Sc. Semester Exam Forms last date is 30th April 2026.</span>
-        <span style="margin-right: 50px;">📢 Scholarship portal is active, please submit your documents in the office.</span>
-    </marquee>
 </div>
+
+<style>
+/* Ticker Container Styling */
+.news-ticker-container {
+    background: #ffffff;
+    border-bottom: 2px solid var(--primary);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    height: 45px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 100;
+}
+
+.ticker-label {
+    background: #e60000;
+    color: white;
+    padding: 0 25px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    z-index: 20;
+    position: relative;
+}
+
+/* Arrow shape for label */
+.ticker-label::after {
+    content: '';
+    position: absolute;
+    right: -15px;
+    border-left: 15px solid #e60000;
+    border-top: 22.5px solid transparent;
+    border-bottom: 22.5px solid transparent;
+}
+
+.ticker-wrapper {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+}
+
+.ticker-content {
+    display: flex;
+    white-space: nowrap;
+    position: absolute;
+    height: 100%;
+    align-items: center;
+    /* Speed Control: 50s is very smooth for PC */
+    animation: tickerMove 25s linear infinite;
+}
+
+.ticker-item {
+    padding: 0 60px;
+    color: #333;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s ease;
+}
+
+.ticker-item:hover {
+    color: #e60000;
+    text-decoration: underline;
+}
+
+/* Pause on Hover (PC par mouse le jane par rukega) */
+.ticker-wrapper:hover .ticker-content {
+    animation-play-state: paused;
+}
+
+/* MODERN CSS ANIMATION: PC & Mobile ke liye reliable */
+@keyframes tickerMove {
+    0% { transform: translateX(5%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .ticker-label { padding: 0 10px; font-size: 0.75rem; }
+    .ticker-item { font-size: 0.85rem; padding: 0 30px; }
+}
+</style>
 
   <section class="hero">
     <img src="campus.jpg" alt="College Campus">

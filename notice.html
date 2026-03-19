@@ -1,160 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Notices | Kashiram Memorial College</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <style>
-    :root { --primary: #003366; --accent: #ffcc00; --white: #ffffff; --bg: #f4f4f4; }
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body { background: var(--bg); display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Official Notices | Kashiram Memorial College</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --primary: #003366; --accent: #ffcc00; --white: #ffffff; --bg: #f4f7f6; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background: var(--bg); display: flex; flex-direction: column; min-height: 100vh; }
 
-    /* --- Navbar & Header --- */
-    header { background: var(--primary); color: var(--white); padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 3000; }
-    .logo-section { display: flex; align-items: center; gap: 15px; }
-    .logo-img { width: 55px; height: 55px; background: #fff; border-radius: 50%; padding: 5px; }
-    .college-info h1 { font-size: 1.1rem; color: var(--accent); line-height: 1.2; }
-    
-    nav ul { display: flex; list-style: none; gap: 15px; }
-    nav ul li a { color: var(--white); text-decoration: none; font-size: 0.85rem; text-transform: uppercase; font-weight: 500; }
-    
-    .menu-toggle { display: none; font-size: 1.8rem; cursor: pointer; color: var(--accent); }
+        /* --- Header & Nav --- */
+        header { background: var(--primary); color: var(--white); padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 2000; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        .logo-section { display: flex; align-items: center; gap: 15px; }
+        .logo-img { width: 50px; height: 50px; background: #fff; border-radius: 50%; padding: 5px; }
+        .college-info h1 { font-size: 1rem; color: var(--accent); line-height: 1.2; }
+        nav ul { display: flex; list-style: none; gap: 15px; }
+        nav ul li a { color: var(--white); text-decoration: none; font-size: 0.85rem; text-transform: uppercase; font-weight: 500; }
+        .menu-toggle { display: none; font-size: 1.6rem; cursor: pointer; color: var(--accent); }
 
-    /* --- Notice Board Section --- */
-    .notice-container { padding: 40px 5%; flex: 1; display: flex; flex-direction: column; align-items: center; }
-    .notice-box { 
-      width: 100%; max-width: 750px; background: white; 
-      border: 2px solid var(--primary); border-radius: 12px; 
-      overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
-      position: relative;
+        /* --- Notice Section --- */
+        .notice-container { max-width: 1000px; margin: 40px auto; padding: 0 20px; flex: 1; width: 100%; }
+        .page-title { text-align: center; color: var(--primary); margin-bottom: 30px; border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 5px; width: 100%; }
+        
+        #notices-list { display: flex; flex-direction: column; gap: 15px; }
+        
+        .notice-card { 
+            background: white; padding: 20px; border-radius: 10px; 
+            border-left: 6px solid var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: flex; justify-content: space-between; align-items: center;
+            transition: 0.3s;
+        }
+        .notice-card:hover { transform: scale(1.01); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+        
+        .notice-info h3 { margin: 5px 0; color: #333; font-size: 1.1rem; }
+        .notice-date { font-size: 0.85rem; color: #003366; font-weight: bold; background: #eef2f7; padding: 3px 10px; border-radius: 20px; }
+        
+        .view-btn { 
+            background: var(--primary); color: white; text-decoration: none; 
+            padding: 10px 20px; border-radius: 5px; font-size: 0.9rem; font-weight: bold;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .view-btn:hover { background: var(--accent); color: #000; }
+
+        /* --- Loading Spinner --- */
+        #loading { text-align: center; padding: 50px; font-size: 1.2rem; color: var(--primary); }
+
+        /* --- Footer --- */
+        footer { background: #1a1a1a; color: #ccc; padding: 30px 5%; text-align: center; margin-top: 50px; }
+        .copyright { border-top: 1px solid #333; padding-top: 20px; font-size: 0.8rem; }
+
+        @media (max-width: 800px) {
+            .menu-toggle { display: block; }
+            nav ul { display: none; } /* Mobile menu logic remains same */
+            .notice-card { flex-direction: column; align-items: flex-start; gap: 15px; }
+            .view-btn { width: 100%; justify-content: center; }
+        }
+        @media (max-width: 800px) {
+    nav ul {
+        display: none; /* Default mein chhupa rahega */
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--primary);
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
     }
-    .notice-header { background: var(--primary); color: white; padding: 15px; text-align: center; font-weight: bold; font-size: 1.2rem; z-index: 10; position: relative; }
-    
-    /* MODERN ANIMATION (Replaces Marquee) */
-    .scroll-wrapper {
-      height: 400px;
-      overflow: hidden;
-      position: relative;
-      background: white;
+
+    /* Jab 'show' class add hogi tab menu dikhega */
+    nav ul.show {
+        display: flex !important;
     }
 
-    .scrolling-content {
-      position: absolute;
-      width: 100%;
-      animation: moveUp 15s linear infinite; /* Speed control yahan se karein */
+    .menu-toggle {
+        display: block !important;
     }
-
-    /* Pause on Hover */
-    .scroll-wrapper:hover .scrolling-content {
-      animation-play-state: paused;
-    }
-
-    @keyframes moveUp {
-      0% { top: 100%; }
-      100% { top: -100%; }
-    }
-
-    .notice-item { padding: 20px; border-bottom: 1px dashed #ddd; }
-    .notice-date { color: #e60000; font-size: 0.8rem; font-weight: bold; display: block; }
-    .notice-link { color: #333; text-decoration: none; font-weight: 500; font-size: 1rem; display: block; }
-
-    footer { background: #1a1a1a; color: #ccc; padding: 20px; text-align: center; margin-top: auto; }
-
-    /* MOBILE NAVIGATION FIX */
-    @media (max-width: 1024px) {
-      .menu-toggle { display: block; z-index: 3001; }
-      nav ul {
-        display: none; 
-        flex-direction: column; 
-        position: fixed; /* Fixed taaki upar dikhe */
-        top: 0; left: 0; 
-        width: 100%; height: 100vh;
-        background: rgba(0, 51, 102, 0.95); /* Solid Primary color */
-        justify-content: center;
-        align-items: center;
-        z-index: 2500;
-      }
-      nav ul.show { display: flex; }
-      nav ul li { margin: 20px 0; }
-      nav ul li a { font-size: 1.2rem; }
-    }
-  </style>
+}
+    </style>
 </head>
 <body>
 
-  <header>
-    <div class="logo-section">
-      <img src="images/logo.png" alt="Logo" class="logo-img">
-      <div class="college-info">
-        <h1>KASHIRAM MEMORIAL COLLEGE</h1>
-        <p>Manpur, Baheri (Bareilly)</p>
+    <header>
+        <div class="logo-section">
+            <img src="images/logo.png" alt="Logo" class="logo-img">
+            <div class="college-info">
+                <h1>KASHIRAM MEMORIAL COLLEGE</h1>
+                <p style="font-size: 0.7rem;">Manpur, Baheri, Bareilly (U.P.)</p>
+            </div>
+        </div>
+        <span class="menu-toggle"><i class="fas fa-bars"></i></span>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="admission.html">Admissions</a></li>
+                <li><a href="examination.html">Examinations</a></li>
+                <li><a href="notice.html">Notices</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="notice-container">
+        <h2 class="page-title">Latest Updates & Notices</h2>
+        
+        <div id="loading"><i class="fas fa-spinner fa-spin"></i> Checking for new notices...</div>
+        <div id="notices-list">
+            </div>
+    </div>
+
+    <footer>
+       <footer>
+    <div class="footer-grid">
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p><i class="fas fa-map-marker-alt"></i> Manpur, Baheri, Bareilly (U.P.)</p>
+        <p><i class="fas fa-phone"></i> +91-9411006547</p>
+        <p><i class="fas fa-envelope"></i> verma143216@gmail.com</p>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <a href="admission.html">Admission 2026</a>
+        <a href="academics.html">Courses & Subjects</a>
+        <a href="notice.html">Latest Notices</a>
+        <a href="gallery.html">College Gallery</a>
+      </div>
+      <div class="footer-section">
+        <h3>About College</h3>
+        <p>Kashiram Memorial College is dedicated to providing quality education under M.J.P. Rohilkhand University, Bareilly.</p>
       </div>
     </div>
-    <div class="menu-toggle" onclick="toggleMenu()">
-      <i class="fas fa-bars" id="menu-icon"></i>
+    <div class="footer-bottom">
+      <p>© 2026 Kashiram Memorial College | All Rights Reserved</p>
     </div>
-    <nav>
-      <ul id="nav-links">
-        <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
-        <li><a href="about.html" onclick="toggleMenu()">About Us</a></li>
-        <li><a href="academics.html" onclick="toggleMenu()">Academics</a></li>
-        <li><a href="admission.html" onclick="toggleMenu()">Admissions</a></li>
-        <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
-        <li><a href="notice.html" onclick="toggleMenu()">Notices</a></li>
-        <li><a href="contact.html" onclick="toggleMenu()">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <div class="notice-container">
-    <h2 style="margin-bottom: 25px; color: var(--primary);"><i class="fas fa-bullhorn"></i> Important Notifications</h2>
-    
-    <div class="notice-box">
-      <div class="notice-header">OFFICIAL NOTICE BOARD</div>
-      
-      <div class="scroll-wrapper">
-        <div class="scrolling-content">
-          <div class="notice-item">
-            <span class="notice-date">18 March 2026</span>
-            <a href="#" class="notice-link">📢 Semester Exam Forms for BA/BSc now live on MJPRU portal.</a>
-          </div>
-          <div class="notice-item">
-            <span class="notice-date">15 March 2026</span>
-            <a href="#" class="notice-link">📢 Holi Holidays: 24th March to 28th March 2026.</a>
-          </div>
-          <div class="notice-item">
-            <span class="notice-date">10 March 2026</span>
-            <a href="#" class="notice-link">📢 Scholarship form hard copy submission deadline: 30th April.</a>
-          </div>
-          <div class="notice-item">
-            <span class="notice-date">05 March 2026</span>
-            <a href="#" class="notice-link">📢 New Academic Session classes will start from next month.</a>
-          </div>
-          </div>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <p>© 2026 Kashiram Memorial College, Manpur Baheri</p>
   </footer>
+        <div class="copyright">
+            <p>© 2026 Kashiram Memorial College, Manpur Baheri (Bareilly)</p>
+            <p>Affiliated with M.J.P. Rohilkhand University</p>
+        </div>
+    </footer>
 
-  <script>
-    function toggleMenu() {
-      const nav = document.getElementById("nav-links");
-      const icon = document.getElementById("menu-icon");
-      
-      nav.classList.toggle("show");
-      
-      if (nav.classList.contains("show")) {
-        icon.classList.replace("fa-bars", "fa-times");
-        document.body.style.overflow = "hidden"; // Scroll rokne ke liye jab menu khula ho
-      } else {
-        icon.classList.replace("fa-times", "fa-bars");
-        document.body.style.overflow = "auto";
-      }
-    }
-  </script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+    <script>
+        // --- APNA FIREBASE CONFIG YAHAN PASTE KAREIN ---
+        const firebaseConfig = {
+  apiKey: "AIzaSyC4spFJpUxkMJbXEmnSI6cg4_B73hAnPZY",
+  authDomain: "kashiram-college-web.firebaseapp.com",
+  projectId: "kashiram-college-web",
+  storageBucket: "kashiram-college-web.firebasestorage.app",
+  messagingSenderId: "711942764216",
+  appId: "1:711942764216:web:f33fe6efac7abb27c9e64d",
+  measurementId: "G-N4JP2XBK1H"
+};
+
+        firebase.initializeApp(firebaseConfig);
+        const dbRef = firebase.database().ref('college_notices');
+
+        // Real-time Fetching
+        dbRef.on('value', (snapshot) => {
+            const loading = document.getElementById('loading');
+            const list = document.getElementById('notices-list');
+            loading.style.display = "none";
+            list.innerHTML = "";
+            
+            const data = snapshot.val();
+            if(data) {
+                // Latest notice ko sabse upar dikhane ke liye reverse loop
+                const entries = Object.entries(data).reverse();
+                entries.forEach(([id, notice]) => {
+                    list.innerHTML += `
+                        <div class="notice-card">
+                            <div class="notice-info">
+                                <span class="notice-date"><i class="far fa-calendar-alt"></i> ${notice.date}</span>
+                                <h3>${notice.title}</h3>
+                            </div>
+                            <a href="${notice.link}" target="_blank" class="view-btn">
+                                <i class="fas fa-download"></i> VIEW PDF
+                            </a>
+                        </div>
+                    `;
+                });
+            } else {
+                list.innerHTML = "<p style='text-align:center;'>Abhi koi naya notice nahi hai.</p>";
+            }
+        });
+    </script>
+    <script>
+    // --- MOBILE MENU LOGIC ---
+    const menuBtn = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('nav ul');
+
+    menuBtn.addEventListener('click', () => {
+        // Menu ko dikhane/chhupane ke liye 'show' class toggle karein
+        navLinks.classList.toggle('show');
+        
+        // Icon badalne ke liye (Bars se Cross)
+        const icon = menuBtn.querySelector('i');
+        if (navLinks.classList.contains('show')) {
+            icon.classList.replace('fa-bars', 'fa-times');
+        } else {
+            icon.classList.replace('fa-times', 'fa-bars');
+        }
+    });
+
+    // Bahar click karne par menu close ho jaye
+    document.addEventListener('click', (e) => {
+        if (!menuBtn.contains(e.target) && !navLinks.contains(e.target)) {
+            navLinks.classList.remove('show');
+            menuBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
+        }
+    });
+</script>
 </body>
 </html>

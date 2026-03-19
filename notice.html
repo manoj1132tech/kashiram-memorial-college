@@ -23,7 +23,7 @@
         .notice-container { max-width: 1000px; margin: 40px auto; padding: 0 20px; flex: 1; width: 100%; }
         .page-title { text-align: center; color: var(--primary); margin-bottom: 30px; border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 5px; width: 100%; }
         
-        #notices-list { display: flex; flex-direction: column; gap: 15px; }
+        #notices-list-main { display: flex; flex-direction: column; gap: 15px; }
         
         .notice-card { 
             background: white; padding: 20px; border-radius: 10px; 
@@ -33,7 +33,6 @@
             transition: 0.3s;
         }
         .notice-card:hover { transform: scale(1.01); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
-        
         .notice-info h3 { margin: 5px 0; color: #333; font-size: 1.1rem; }
         .notice-date { font-size: 0.85rem; color: #003366; font-weight: bold; background: #eef2f7; padding: 3px 10px; border-radius: 20px; }
         
@@ -44,42 +43,24 @@
         }
         .view-btn:hover { background: var(--accent); color: #000; }
 
-        /* --- Loading Spinner --- */
-        #loading { text-align: center; padding: 50px; font-size: 1.2rem; color: var(--primary); }
-
         /* --- Footer --- */
-        footer { background: #1a1a1a; color: #ccc; padding: 30px 5%; text-align: center; margin-top: 50px; }
-        .copyright { border-top: 1px solid #333; padding-top: 20px; font-size: 0.8rem; }
+        footer { background: #1a1a1a; color: #ccc; padding: 40px 5%; margin-top: 50px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .footer-section h3 { color: var(--accent); margin-bottom: 20px; font-size: 1.2rem; }
+        .footer-section p, .footer-section a { color: #ccc; text-decoration: none; display: block; margin-bottom: 10px; font-size: 0.9rem; }
+        .footer-bottom { text-align: center; border-top: 1px solid #333; padding-top: 20px; margin-top: 20px; font-size: 0.8rem; }
 
         @media (max-width: 800px) {
             .menu-toggle { display: block; }
-            nav ul { display: none; } /* Mobile menu logic remains same */
+            nav ul {
+                display: none; flex-direction: column; position: absolute;
+                top: 70px; left: 0; width: 100%; background: var(--primary);
+                padding: 20px; text-align: center; box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+            }
+            nav ul.show { display: flex !important; }
             .notice-card { flex-direction: column; align-items: flex-start; gap: 15px; }
             .view-btn { width: 100%; justify-content: center; }
         }
-        @media (max-width: 800px) {
-    nav ul {
-        display: none; /* Default mein chhupa rahega */
-        flex-direction: column;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background: var(--primary);
-        padding: 20px;
-        text-align: center;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-    }
-
-    /* Jab 'show' class add hogi tab menu dikhega */
-    nav ul.show {
-        display: flex !important;
-    }
-
-    .menu-toggle {
-        display: block !important;
-    }
-}
     </style>
 </head>
 <body>
@@ -105,42 +86,40 @@
         </nav>
     </header>
 
+    <div style="background: #003366; color: #ffcc00; padding: 8px; overflow: hidden; white-space: nowrap; font-size: 0.9rem; font-weight: bold; border-bottom: 2px solid #ffcc00;">
+        <marquee id="notice-top-ticker">Loading latest college news...</marquee>
+    </div>
+
     <div class="notice-container">
-        <h2 class="page-title">Latest Updates & Notices</h2>
+        <h2 class="page-title"><i class="fas fa-file-alt"></i> Official College Notices</h2>
         
-        <div id="loading"><i class="fas fa-spinner fa-spin"></i> Checking for new notices...</div>
-        <div id="notices-list">
+        <div id="loading" style="text-align: center; padding: 20px;"><i class="fas fa-spinner fa-spin"></i> Fetching Data...</div>
+        
+        <div id="notices-list-main">
             </div>
     </div>
 
     <footer>
-       <footer>
-    <div class="footer-grid">
-      <div class="footer-section">
-        <h3>Contact Us</h3>
-        <p><i class="fas fa-map-marker-alt"></i> Manpur, Baheri, Bareilly (U.P.)</p>
-        <p><i class="fas fa-phone"></i> +91-9411006547</p>
-        <p><i class="fas fa-envelope"></i> verma143216@gmail.com</p>
-      </div>
-      <div class="footer-section">
-        <h3>Quick Links</h3>
-        <a href="admission.html">Admission 2026</a>
-        <a href="academics.html">Courses & Subjects</a>
-        <a href="notice.html">Latest Notices</a>
-        <a href="gallery.html">College Gallery</a>
-      </div>
-      <div class="footer-section">
-        <h3>About College</h3>
-        <p>Kashiram Memorial College is dedicated to providing quality education under M.J.P. Rohilkhand University, Bareilly.</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2026 Kashiram Memorial College | All Rights Reserved</p>
-    </div>
-  </footer>
-        <div class="copyright">
-            <p>© 2026 Kashiram Memorial College, Manpur Baheri (Bareilly)</p>
-            <p>Affiliated with M.J.P. Rohilkhand University</p>
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Manpur, Baheri, Bareilly (U.P.)</p>
+                <p><i class="fas fa-phone"></i> +91-9411006547</p>
+                <p><i class="fas fa-envelope"></i> verma143216@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="admission.html">Admission 2026</a>
+                <a href="examination.html">Examination Cell</a>
+                <a href="notice.html">Latest Notices</a>
+            </div>
+            <div class="footer-section">
+                <h3>About College</h3>
+                <p>Kashiram Memorial College is dedicated to providing quality education under M.J.P. Rohilkhand University, Bareilly.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Kashiram Memorial College | All Rights Reserved</p>
         </div>
     </footer>
 
@@ -148,35 +127,36 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 
     <script>
-        // --- APNA FIREBASE CONFIG YAHAN PASTE KAREIN ---
         const firebaseConfig = {
-  apiKey: "AIzaSyC4spFJpUxkMJbXEmnSI6cg4_B73hAnPZY",
-  authDomain: "kashiram-college-web.firebaseapp.com",
-  databaseURL: "https://kashiram-college-web-default-rtdb.firebaseio.com/", // 
-  projectId: "kashiram-college-web",
-  storageBucket: "kashiram-college-web.firebasestorage.app",
-  messagingSenderId: "711942764216",
-  appId: "1:711942764216:web:f33fe6efac7abb27c9e64d",
-  measurementId: "G-N4JP2XBK1H"
-};
-};
+            apiKey: "AIzaSyC4spFJpUxkMJbXEmnSI6cg4_B73hAnPZY",
+            authDomain: "kashiram-college-web.firebaseapp.com",
+            databaseURL: "https://kashiram-college-web-default-rtdb.firebaseio.com/",
+            projectId: "kashiram-college-web",
+            storageBucket: "kashiram-college-web.firebasestorage.app",
+            messagingSenderId: "711942764216",
+            appId: "1:711942764216:web:f33fe6efac7abb27c9e64d"
+        };
 
-        firebase.initializeApp(firebaseConfig);
+        if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
         const dbRef = firebase.database().ref('college_notices');
 
-        // Real-time Fetching
         dbRef.on('value', (snapshot) => {
+            const listMain = document.getElementById('notices-list-main');
+            const topTicker = document.getElementById('notice-top-ticker');
             const loading = document.getElementById('loading');
-            const list = document.getElementById('notices-list');
-            loading.style.display = "none";
-            list.innerHTML = "";
-            
             const data = snapshot.val();
+            
+            if (loading) loading.style.display = "none";
+            listMain.innerHTML = "";
+            
             if(data) {
-                // Latest notice ko sabse upar dikhane ke liye reverse loop
+                let tickerContent = "";
                 const entries = Object.entries(data).reverse();
+                
                 entries.forEach(([id, notice]) => {
-                    list.innerHTML += `
+                    tickerContent += ` • ${notice.title} (${notice.date}) `;
+                    
+                    listMain.innerHTML += `
                         <div class="notice-card">
                             <div class="notice-info">
                                 <span class="notice-date"><i class="far fa-calendar-alt"></i> ${notice.date}</span>
@@ -188,36 +168,22 @@
                         </div>
                     `;
                 });
+                topTicker.innerHTML = tickerContent;
             } else {
-                list.innerHTML = "<p style='text-align:center;'>Abhi koi naya notice nahi hai.</p>";
+                listMain.innerHTML = "<p style='text-align:center;'>No notices found at the moment.</p>";
+                topTicker.innerHTML = "Welcome to Kashiram Memorial College Portal.";
             }
         });
+
+        // Mobile Menu Logic
+        const menuBtn = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('nav ul');
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+            const icon = menuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
     </script>
-    <script>
-    // --- MOBILE MENU LOGIC ---
-    const menuBtn = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('nav ul');
-
-    menuBtn.addEventListener('click', () => {
-        // Menu ko dikhane/chhupane ke liye 'show' class toggle karein
-        navLinks.classList.toggle('show');
-        
-        // Icon badalne ke liye (Bars se Cross)
-        const icon = menuBtn.querySelector('i');
-        if (navLinks.classList.contains('show')) {
-            icon.classList.replace('fa-bars', 'fa-times');
-        } else {
-            icon.classList.replace('fa-times', 'fa-bars');
-        }
-    });
-
-    // Bahar click karne par menu close ho jaye
-    document.addEventListener('click', (e) => {
-        if (!menuBtn.contains(e.target) && !navLinks.contains(e.target)) {
-            navLinks.classList.remove('show');
-            menuBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
-        }
-    });
-</script>
 </body>
 </html>

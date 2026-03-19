@@ -135,26 +135,46 @@
     </nav>
   </header>
 
- <div class="news-ticker-container">
-    <div class="ticker-label">LATEST UPDATES</div>
-    <div class="ticker-wrapper">
-        <div class="ticker-content">
-            <a href="pdf/admission-form-2026.pdf" target="_blank" class="ticker-item">
-                <i class="fas fa-file-pdf"></i> 📢 Click here to Download Admission Form (Session 2026-27)
-            </a>
-            
-            <a href="https://mjpru.ac.in" target="_blank" class="ticker-item">
-                <i class="fas fa-external-link-alt"></i> 📢 MJPRU Exam Portal: Fill your BA/BSc Semester Forms here.
-            </a>
+ <div style="background: #ffcc00; padding: 10px 0; border-bottom: 3px solid #003366; overflow: hidden; display: flex; align-items: center; position: relative; z-index: 100;">
+    <div style="background: #003366; color: white; padding: 5px 20px; font-weight: bold; position: absolute; left: 0; z-index: 110; box-shadow: 5px 0 10px rgba(0,0,0,0.2); font-size: 0.8rem;">
+        LATEST UPDATES:
+    </div>
+    <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();" id="home-ticker" style="color: #003366; font-weight: bold; font-size: 1rem; margin-left: 160px;">
+        Connecting to college database...
+    </marquee>
+</div>
 
-            <a href="notice.html" class="ticker-item">
-                <i class="fas fa-bullhorn"></i> 📢 College will remain closed from 24th to 28th March for Holi.
-            </a>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 
-            <a href="pdf/admission-form-2026.pdf" target="_blank" class="ticker-item">
-                <i class="fas fa-file-pdf"></i> 📢 Click here to Download Admission Form (Session 2026-27)
-            </a>
-        </div>
+<script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyC4spFJpUxkMJbXEmnSI6cg4_B73hAnPZY",
+        authDomain: "kashiram-college-web.firebaseapp.com",
+        databaseURL: "https://kashiram-college-web-default-rtdb.firebaseio.com/",
+        projectId: "kashiram-college-web",
+        storageBucket: "kashiram-college-web.firebasestorage.app",
+        messagingSenderId: "711942764216",
+        appId: "1:711942764216:web:f33fe6efac7abb27c9e64d"
+    };
+
+    if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
+    const dbTicker = firebase.database().ref('college_notices');
+
+    dbTicker.limitToLast(5).on('value', (snapshot) => {
+        const ticker = document.getElementById('home-ticker');
+        const data = snapshot.val();
+        if(data) {
+            let tickerText = "";
+            Object.values(data).reverse().forEach(notice => {
+                tickerText += ` ⭐ ${notice.title} (${notice.date}) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `;
+            });
+            ticker.innerHTML = tickerText;
+        } else {
+            ticker.innerHTML = "Welcome to Kashiram Memorial College, Baheri.";
+        }
+    });
+</script>
     </div>
 </div>
 

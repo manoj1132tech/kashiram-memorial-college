@@ -80,53 +80,52 @@
     </nav>
   </header>
 
-  <div class="container">
-    <div class="form-container">
-      <h2>Admission Enquiry Form</h2>
-      <form action=" <form action="https://formspree.io/f/mvzwdobr"  method="POST">
-        <div class="form-group">
-          <label>Full Name</label>
-          <input type="text" name="Student Name" placeholder="Apna pura naam likhein" required>
-        </div>
-
-        <div class="form-group">
-          <label>Mobile Number (10 Digits)</label>
-          <input type="tel" name="Mobile" pattern="[6-9][0-9]{9}" title="Kripya 10-digit Indian mobile number bharein (6-9 se shuru)" placeholder="e.g. 9876543210" required>
-        </div>
-
-        <div class="form-group">
-          <label>Course Interested In</label>
-          <select name="Course" required>
-            <option value="">-- Select Course --</option>
-            <option value="BA">Bachelor of Arts (B.A.)</option>
-            <option value="BSC">Bachelor of Science (B.Sc.)</option>
-            <option value="BCOM">Bachelor of Commerce (B.Com.)</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>12th Passing Year</label>
-          <select name="Passing Year" required>
-            <option value="">-- Select Year --</option>
-            <option value="2026">2026</option>
-            <option value="2025">2025</option>
-            <option value="2024">2024</option>
-            <option value="2023">2023</option>
-            <option value="2022">2022</option>
-            <option value="2021">2021</option>
-            <option value="2020">2020</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>Permanent Address</label>
-          <textarea name="Address" rows="3" placeholder="Village, Post, Tehsil, District" required></textarea>
-        </div>
-
-        <button type="submit" class="submit-btn">SUBMIT APPLICATION</button>
-      </form>
+ <div class="form-container">
+  <h2>Admission Enquiry Form</h2>
+  <form action="https://formspree.io/f/mvzwdobr" method="POST">
+    
+    <div class="form-group">
+      <label>Student's Full Name</label>
+      <input type="text" name="student_name" placeholder="Apna pura naam likhein" required>
     </div>
 
+    <div class="form-group">
+      <label>Father's Name</label>
+      <input type="text" name="father_name" placeholder="Pitaji ka naam likhein" required>
+    </div>
+
+    <div class="form-group">
+      <label>Mobile Number (10 Digits)</label>
+      <input type="tel" name="phone" pattern="[6-9][0-9]{9}" title="Kripya 10-digit mobile number bharein" placeholder="e.g. 9876543210" required>
+    </div>
+
+    <div class="form-group">
+      <label>Course Interested In</label>
+      <select name="course" required>
+        <option value="">-- Select Course --</option>
+        <option value="BA">Bachelor of Arts (B.A.)</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>12th Passing Year</label>
+      <select name="passing_year" required>
+        <option value="">-- Select Year --</option>
+        <option value="2026">2026</option>
+        <option value="2025">2025</option>
+        <option value="2024">2024</option>
+        <option value="2023">2023</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Permanent Address</label>
+      <textarea name="address" rows="3" placeholder="Village, Post, Tehsil, District" required></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn">SUBMIT APPLICATION</button>
+  </form>
+</div>
     <div class="info-sidebar">
       <h3>Eligibility Criteria</h3>
       <ul>

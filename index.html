@@ -4,93 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kashiram Memorial College | Manpur Baheri Bareilly</title>
-  
-  <meta name="description" content="Kashiram Memorial College, Manpur Baheri, Bareilly. Leading institution for higher education.">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
   <style>
-    :root {
-      --primary-color: #003366;
-      --accent-color: #ffcc00;
-      --text-light: #ffffff;
-    }
-
+    :root { --primary-color: #003366; --accent-color: #ffcc00; --text-light: #ffffff; }
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
-    header {
-      background: var(--primary-color);
-      color: var(--text-light);
-      padding: 10px 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    }
-
+    header { background: var(--primary-color); color: var(--text-light); padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
     .logo-section { display: flex; align-items: center; gap: 15px; }
-    .logo-img { width: 60px; height: 60px; background: #fff; border-radius: 50%; padding: 5px; }
     .college-info h1 { font-size: 1.2rem; color: var(--accent-color); line-height: 1.2; }
     .college-info p { font-size: 0.8rem; font-weight: 300; }
 
     nav ul { display: flex; list-style: none; gap: 15px; }
     nav ul li a { color: var(--text-light); text-decoration: none; font-size: 0.85rem; text-transform: uppercase; transition: 0.3s; }
-    nav ul li a:hover { color: var(--accent-color); }
-
     .menu-toggle { display: none; font-size: 1.8rem; cursor: pointer; color: var(--accent-color); }
 
-    /* Breaking News - Right to Left */
-    .breaking-news {
-      background: #fff;
-      border-bottom: 2px solid var(--accent-color);
-      display: flex;
-      align-items: center;
-      padding: 8px 5%;
-      overflow: hidden;
+    /* --- FIXED TICKER FOR MOBILE --- */
+    .ticker-container {
+      background: #ffcc00; height: 45px; display: flex; align-items: center;
+      border-bottom: 3px solid #003366; overflow: hidden; position: relative;
     }
-    .news-label {
-      background: red;
-      color: white;
-      padding: 4px 15px;
-      font-weight: bold;
-      border-radius: 3px;
-      margin-right: 15px;
-      white-space: nowrap;
-      font-size: 0.9rem;
-      z-index: 5;
+    .ticker-label {
+      background: #003366; color: white; padding: 0 15px; height: 100%;
+      display: flex; align-items: center; font-weight: bold; font-size: 0.8rem;
+      z-index: 10; box-shadow: 5px 0 10px rgba(0,0,0,0.2); position: absolute; left: 0;
     }
+    .ticker-wrapper { overflow: hidden; width: 100%; padding-left: 160px; }
+    .ticker-content {
+      display: inline-block; white-space: nowrap;
+      animation: tickerMove 25s linear infinite;
+      color: #003366; font-weight: bold; font-size: 0.95rem;
+    }
+    @keyframes tickerMove { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+    .ticker-wrapper:hover .ticker-content { animation-play-state: paused; }
 
-    .hero {
-      position: relative;
-      height: 70vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
-    }
-    .hero img {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      object-fit: cover; z-index: -1; filter: brightness(40%);
-    }
+    .hero { position: relative; height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; }
+    .hero img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; filter: brightness(40%); }
     .hero h2 { font-size: 2.5rem; margin-bottom: 20px; padding: 0 10px; }
 
     .buttons { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
-    .buttons a {
-      padding: 12px 25px;
-      background: var(--accent-color);
-      color: #000;
-      text-decoration: none;
-      font-weight: 600;
-      border-radius: 5px;
-      transition: 0.3s;
-    }
-    .buttons a:hover { transform: scale(1.05); background: #fff; }
+    .buttons a { padding: 12px 25px; background: var(--accent-color); color: #000; text-decoration: none; font-weight: 600; border-radius: 5px; transition: 0.3s; }
 
     footer { background: #1a1a1a; color: #ccc; padding: 40px 5% 20px; text-align: center; }
     .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; text-align: left; margin-bottom: 20px; }
@@ -98,16 +52,10 @@
 
     @media (max-width: 1024px) {
       .menu-toggle { display: block; }
-      nav ul {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 80px; left: 0; width: 100%;
-        background: var(--primary-color);
-        padding: 20px;
-      }
+      nav ul { display: none; flex-direction: column; position: absolute; top: 80px; left: 0; width: 100%; background: var(--primary-color); padding: 20px; }
       nav ul.show { display: flex; }
       .hero h2 { font-size: 1.8rem; }
+      .ticker-wrapper { padding-left: 130px; }
     }
   </style>
 </head>
@@ -115,7 +63,7 @@
 
   <header>
     <div class="logo-section">
-       <img src="images/logo.png" alt="College Logo" style="width:60px;height:auto;" class="me-2">
+      <img src="images/logo.png" alt="Logo" style="width:60px;height:auto;">
       <div class="college-info">
         <h1>KASHIRAM MEMORIAL COLLEGE</h1>
         <p>Manpur, Baheri, Bareilly (U.P.)</p>
@@ -127,7 +75,7 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="admission.html">Admissions</a></li>
-         <li><a href="academics.html">Academics</a></li>
+        <li><a href="academics.html">Academics</a></li>
         <li><a href="examination.html">Examinations</a></li>
         <li><a href="gallery.html">Gallery</a></li>
         <li><a href="notice.html">Notices</a></li>
@@ -136,138 +84,12 @@
     </nav>
   </header>
 
- <div style="background: #ffcc00; padding: 10px 0; border-bottom: 3px solid #003366; overflow: hidden; display: flex; align-items: center; position: relative; z-index: 100;">
-    <div style="background: #003366; color: white; padding: 5px 20px; font-weight: bold; position: absolute; left: 0; z-index: 110; box-shadow: 5px 0 10px rgba(0,0,0,0.2); font-size: 0.8rem;">
-        LATEST UPDATES:
+  <div class="ticker-container">
+    <div class="ticker-label">LATEST UPDATES:</div>
+    <div class="ticker-wrapper">
+      <div id="home-ticker" class="ticker-content">Connecting to college database...</div>
     </div>
-    <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();" id="home-ticker" style="color: #003366; font-weight: bold; font-size: 1rem; margin-left: 160px;">
-        Connecting to college database...
-    </marquee>
-</div>
-
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-
-<script>
-    const firebaseConfig = {
-        apiKey: "AIzaSyC4spFJpUxkMJbXEmnSI6cg4_B73hAnPZY",
-        authDomain: "kashiram-college-web.firebaseapp.com",
-        databaseURL: "https://kashiram-college-web-default-rtdb.firebaseio.com/",
-        projectId: "kashiram-college-web",
-        storageBucket: "kashiram-college-web.firebasestorage.app",
-        messagingSenderId: "711942764216",
-        appId: "1:711942764216:web:f33fe6efac7abb27c9e64d"
-    };
-
-    if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
-    const dbTicker = firebase.database().ref('college_notices');
-
-    dbTicker.limitToLast(5).on('value', (snapshot) => {
-        const ticker = document.getElementById('home-ticker');
-        const data = snapshot.val();
-        if(data) {
-            let tickerText = "";
-            Object.values(data).reverse().forEach(notice => {
-                tickerText += ` ⭐ ${notice.title} (${notice.date}) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `;
-            });
-            ticker.innerHTML = tickerText;
-        } else {
-            ticker.innerHTML = "Welcome to Kashiram Memorial College, Baheri.";
-        }
-    });
-</script>
-    </div>
-</div>
-
-<style>
-/* Ticker Container Styling */
-.news-ticker-container {
-    background: #ffffff;
-    border-bottom: 2px solid var(--primary);
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    height: 45px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    position: relative;
-    z-index: 100;
-}
-
-.ticker-label {
-    background: #e60000;
-    color: white;
-    padding: 0 25px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-    font-size: 0.85rem;
-    white-space: nowrap;
-    z-index: 20;
-    position: relative;
-}
-
-/* Arrow shape for label */
-.ticker-label::after {
-    content: '';
-    position: absolute;
-    right: -15px;
-    border-left: 15px solid #e60000;
-    border-top: 22.5px solid transparent;
-    border-bottom: 22.5px solid transparent;
-}
-
-.ticker-wrapper {
-    flex: 1;
-    overflow: hidden;
-    position: relative;
-    height: 100%;
-}
-
-.ticker-content {
-    display: flex;
-    white-space: nowrap;
-    position: absolute;
-    height: 100%;
-    align-items: center;
-    /* Speed Control: 50s is very smooth for PC */
-    animation: tickerMove 25s linear infinite;
-}
-
-.ticker-item {
-    padding: 0 60px;
-    color: #333;
-    font-weight: 500;
-    font-size: 0.95rem;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    transition: 0.3s ease;
-}
-
-.ticker-item:hover {
-    color: #e60000;
-    text-decoration: underline;
-}
-
-/* Pause on Hover (PC par mouse le jane par rukega) */
-.ticker-wrapper:hover .ticker-content {
-    animation-play-state: paused;
-}
-
-/* MODERN CSS ANIMATION: PC & Mobile ke liye reliable */
-@keyframes tickerMove {
-    0% { transform: translateX(5%); }
-    100% { transform: translateX(-100%); }
-}
-
-/* Mobile adjustments */
-@media (max-width: 768px) {
-    .ticker-label { padding: 0 10px; font-size: 0.75rem; }
-    .ticker-item { font-size: 0.85rem; padding: 0 30px; }
-}
-</style>
+  </div>
 
   <section class="hero">
     <img src="images/campus.jpg.jpeg" alt="College Campus">
@@ -275,7 +97,7 @@
     <div class="buttons">
       <a href="admission.html">Apply Now</a>
       <a href="https://mjpruiums.in/(S(hikghy53yjwrcod1d4n5wo1y))/Results/ExamResult.aspx">Results</a>
-      <a href="https://mjpru.ac.in/ExamScheme.aspx">More Notices</a>
+      <a href="notice.html">View Notices</a>
     </div>
   </section>
 
@@ -298,13 +120,37 @@
     </div>
   </footer>
 
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
   <script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyC4spFJpUxkMJbXEmnSI6cg4_B73hAnPZY",
+        authDomain: "kashiram-college-web.firebaseapp.com",
+        databaseURL: "https://kashiram-college-web-default-rtdb.firebaseio.com/",
+        projectId: "kashiram-college-web",
+        storageBucket: "kashiram-college-web.firebasestorage.app",
+        messagingSenderId: "711942764216",
+        appId: "1:711942764216:web:f33fe6efac7abb27c9e64d"
+    };
+
+    if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
+    const dbTicker = firebase.database().ref('college_notices');
+
+    dbTicker.limitToLast(5).on('value', (snapshot) => {
+        const ticker = document.getElementById('home-ticker');
+        const data = snapshot.val();
+        if(data) {
+            let tickerText = "";
+            Object.values(data).reverse().forEach(notice => {
+                tickerText += ` ⭐ ${notice.title} (${notice.date}) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `;
+            });
+            ticker.innerHTML = tickerText + tickerText; // Repeat for loop
+        }
+    });
+
     function toggleMenu() {
       const menu = document.getElementById("nav-links");
       menu.classList.toggle("show");
-      const icon = document.querySelector(".menu-toggle i");
-      icon.classList.toggle("fa-bars");
-      icon.classList.toggle("fa-times");
     }
   </script>
 </body>

@@ -4,8 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kashiram Memorial College | Manpur Baheri Bareilly</title>
+  
+  <link rel="icon" href="images/logo.png" type="image/png">
+  
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollegeOrUniversity",
+    "name": "Kashiram Memorial College",
+    "url": "https://www.kashiramcollege.in", 
+    "logo": "https://www.kashiramcollege.in/images/logo.png",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Baheri",
+      "addressRegion": "Bareilly",
+      "addressCountry": "IN"
+    }
+  }
+  </script>
 
   <style>
     :root { --primary-color: #003366; --accent-color: #ffcc00; --text-light: #ffffff; }
@@ -20,22 +39,11 @@
     nav ul li a { color: var(--text-light); text-decoration: none; font-size: 0.85rem; text-transform: uppercase; transition: 0.3s; }
     .menu-toggle { display: none; font-size: 1.8rem; cursor: pointer; color: var(--accent-color); }
 
-    /* --- FIXED TICKER FOR MOBILE --- */
-    .ticker-container {
-      background: #ffcc00; height: 45px; display: flex; align-items: center;
-      border-bottom: 3px solid #003366; overflow: hidden; position: relative;
-    }
-    .ticker-label {
-      background: #003366; color: white; padding: 0 15px; height: 100%;
-      display: flex; align-items: center; font-weight: bold; font-size: 0.8rem;
-      z-index: 10; box-shadow: 5px 0 10px rgba(0,0,0,0.2); position: absolute; left: 0;
-    }
+    /* --- TICKER SECTION --- */
+    .ticker-container { background: #ffcc00; height: 45px; display: flex; align-items: center; border-bottom: 3px solid #003366; overflow: hidden; position: relative; }
+    .ticker-label { background: #003366; color: white; padding: 0 15px; height: 100%; display: flex; align-items: center; font-weight: bold; font-size: 0.8rem; z-index: 10; box-shadow: 5px 0 10px rgba(0,0,0,0.2); position: absolute; left: 0; }
     .ticker-wrapper { overflow: hidden; width: 100%; padding-left: 160px; }
-    .ticker-content {
-      display: inline-block; white-space: nowrap;
-      animation: tickerMove 25s linear infinite;
-      color: #003366; font-weight: bold; font-size: 0.95rem;
-    }
+    .ticker-content { display: inline-block; white-space: nowrap; animation: tickerMove 25s linear infinite; color: #003366; font-weight: bold; font-size: 0.95rem; }
     @keyframes tickerMove { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
     .ticker-wrapper:hover .ticker-content { animation-play-state: paused; }
 
@@ -63,7 +71,7 @@
 
   <header>
     <div class="logo-section">
-      <img src="images/logo.png" alt="Logo" style="width:60px;height:auto;">
+      <img src="images/logo.png" alt="Kashiram Memorial College Logo" style="width:60px;height:auto;">
       <div class="college-info">
         <h1>KASHIRAM MEMORIAL COLLEGE</h1>
         <p>Manpur, Baheri, Bareilly (U.P.)</p>
@@ -96,7 +104,7 @@
     <h2>Education for Excellence and Values</h2>
     <div class="buttons">
       <a href="admission.html">Apply Now</a>
-      <a href="https://mjpruiums.in/(S(hikghy53yjwrcod1d4n5wo1y))/Results/ExamResult.aspx">Results</a>
+      <a href="https://mjpruiums.in/Results/ExamResult.aspx">Results</a>
       <a href="notice.html">View Notices</a>
       <a href="https://mjpru.ac.in/ExamScheme.aspx">University Notices</a>
     </div>
@@ -145,7 +153,7 @@
             Object.values(data).reverse().forEach(notice => {
                 tickerText += ` ⭐ ${notice.title} (${notice.date}) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `;
             });
-            ticker.innerHTML = tickerText + tickerText; // Repeat for loop
+            ticker.innerHTML = tickerText + tickerText;
         }
     });
 

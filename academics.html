@@ -5,48 +5,117 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Academics | Kashiram Memorial College</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
   <style>
-    :root { --primary: #003366; --accent: #ffcc00; --white: #ffffff; --bg: #f4f4f4; }
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body { background: var(--bg); display: flex; flex-direction: column; min-height: 100vh; }
+    :root { 
+      --primary: #003366; 
+      --accent: #ffcc00; 
+      --white: #ffffff; 
+      --bg-soft: #f0f4f8; 
+      --text-dark: #2c3e50;
+      --code-bg: #334155; /* Slightly lighter than previous dark background */
+    }
 
-    /* Header & Navbar */
-    header { background: var(--primary); color: var(--white); padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+    body { 
+      background-color: var(--bg-soft);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(0, 51, 102, 0.05) 0px, transparent 50%), 
+        radial-gradient(at 100% 0%, rgba(255, 204, 0, 0.05) 0px, transparent 50%),
+        url("https://www.transparenttextures.com/patterns/white-diamond.png");
+      color: var(--text-dark); 
+      display: flex; 
+      flex-direction: column; 
+      min-height: 100vh; 
+    }
+
+    header { background: var(--primary); color: var(--white); padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
     .logo-section { display: flex; align-items: center; gap: 15px; }
-    .logo-img { width: 55px; height: 55px; background: #fff; border-radius: 50%; padding: 5px; }
-    .college-info h1 { font-size: 1.1rem; color: var(--accent); line-height: 1.2; }
+    .college-info h1 { font-size: 1.1rem; color: var(--accent); line-height: 1.2; letter-spacing: 0.5px; }
     
-    nav ul { display: flex; list-style: none; gap: 15px; }
+    nav ul { display: flex; list-style: none; gap: 20px; }
     nav ul li a { color: var(--white); text-decoration: none; font-size: 0.85rem; text-transform: uppercase; font-weight: 500; transition: 0.3s; }
     nav ul li a:hover { color: var(--accent); }
     .menu-toggle { display: none; font-size: 1.8rem; cursor: pointer; color: var(--accent); }
 
-    /* Academics Section */
-    .academics-container { max-width: 1100px; margin: 40px auto; padding: 0 20px; flex: 1; }
-    .page-title { text-align: center; color: var(--primary); margin-bottom: 40px; }
-    .page-title h2 { font-size: 2.2rem; position: relative; display: inline-block; padding-bottom: 10px; }
-    .page-title h2::after { content: ''; width: 60%; height: 4px; background: var(--accent); position: absolute; bottom: 0; left: 20%; }
+    .academics-container { max-width: 1200px; margin: 50px auto; padding: 0 25px; flex: 1; width: 100%; }
 
-    .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-    .course-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 5px solid var(--primary); }
-    .course-card h3 { color: var(--primary); margin-bottom: 20px; font-size: 1.5rem; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+    .page-title { text-align: center; margin-bottom: 50px; }
+    .page-title h2 { font-size: 2.5rem; color: var(--primary); margin-bottom: 10px; font-weight: 700; }
+    .page-title .divider { width: 80px; height: 4px; background: var(--accent); margin: 0 auto; border-radius: 2px; }
+
+    /* Course Cards Styling */
+    .course-card { 
+      background: white; 
+      padding: 40px; 
+      border-radius: 20px; 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+      border-top: 6px solid var(--primary);
+      margin-bottom: 30px;
+    }
+    .course-card h3 { color: var(--primary); margin-bottom: 25px; font-size: 1.6rem; display: flex; align-items: center; gap: 12px; }
     
-    .subject-list { list-style: none; }
-    .subject-list li { padding: 8px 0; border-bottom: 1px solid #f9f9f9; display: flex; align-items: center; gap: 10px; color: #444; }
-    .subject-list li i { color: var(--primary); font-size: 0.8rem; }
-    
-    .vocational-box { margin-top: 30px; background: #fffbe6; padding: 20px; border-radius: 8px; border: 1px solid #ffe58f; text-align: center; }
+    /* Code Style Subject List with Graduation Cap */
+    .subject-list { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+      gap: 15px; 
+      list-style: none; 
+      background: var(--code-bg);
+      padding: 25px;
+      border-radius: 12px;
+      border-left: 5px solid var(--accent);
+    }
+    .subject-list li { 
+      font-family: 'Fira Code', monospace; 
+      color: #e2e8f0; 
+      font-size: 0.95rem;
+      padding: 8px 0;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .subject-list li i {
+      color: var(--accent);
+      font-size: 0.8rem;
+    }
+    .subject-list li:hover { color: var(--accent); transform: translateX(5px); }
+
+    /* Institutional Formal Note */
+    .formal-notice {
+      margin-top: 35px;
+      background: #f8fafc;
+      border: 1px dashed #cbd5e1;
+      border-radius: 12px;
+      padding: 20px 25px;
+    }
+    .notice-text h5 { color: var(--primary); font-size: 0.9rem; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; border-bottom: 2px solid var(--accent); display: inline-block; }
+    .notice-text p { font-size: 0.95rem; color: #475569; line-height: 1.6; }
+
+    /* Restored Old Vocational Style */
+    .vocational-box { 
+      margin-top: 30px; 
+      background: #fffbe6; 
+      padding: 20px; 
+      border-radius: 8px; 
+      border: 1px solid #ffe58f; 
+      text-align: center; 
+    }
     .vocational-box h4 { color: #d48806; margin-bottom: 5px; }
     .vocational-box p { font-weight: 600; color: #856404; font-style: italic; }
 
-    /* Footer */
-    footer { background: #1a1a1a; color: #ccc; padding: 30px 5%; text-align: center; margin-top: 50px; }
+    footer { background: #0f172a; color: #94a3b8; padding: 60px 5% 30px; text-align: center; margin-top: 50px; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: left; max-width: 1200px; margin: 0 auto; }
+    .copyright { margin-top: 40px; padding-top: 25px; border-top: 1px solid #1e293b; font-size: 0.85rem; }
 
     @media (max-width: 1024px) {
       .menu-toggle { display: block; }
-      nav ul { display: none; flex-direction: column; position: absolute; top: 75px; left: 0; width: 100%; background: var(--primary); padding: 20px; text-align: center; }
+      nav ul { display: none; flex-direction: column; position: absolute; top: 75px; left: 0; width: 100%; background: var(--primary); padding: 30px; text-align: center; }
       nav ul.show { display: flex; }
-      nav ul li { margin: 12px 0; }
+      .academics-container { margin: 30px auto; }
     }
   </style>
 </head>
@@ -54,10 +123,10 @@
 
   <header>
     <div class="logo-section">
-      <img src="images/logo.png" alt="College Logo" style="width:60px;height:auto;" class="me-2">
+      <img src="images/logo.png" alt="College Logo" style="width:60px;height:auto;">
       <div class="college-info">
         <h1>KASHIRAM MEMORIAL COLLEGE</h1>
-        <p>Manpur, Baheri, Bareilly (U.P.)</p>
+        <p style="font-size: 0.8rem; opacity: 0.8;">Manpur, Baheri, Bareilly (U.P.)</p>
       </div>
     </div>
     <span class="menu-toggle" id="mobile-menu-btn"><i class="fas fa-bars"></i></span>
@@ -77,27 +146,36 @@
 
   <div class="academics-container">
     <div class="page-title">
-      <h2>Our Courses & Subjects</h2>
-      <p style="margin-top:10px;">Quality Education under M.J.P. Rohilkhand University Curriculum</p>
+      <h2>Academic Programs</h2>
+      <div class="divider"></div>
+      <p style="margin-top:15px; color: #64748b;">Curriculum approved by M.J.P. Rohilkhand University, Bareilly</p>
     </div>
 
-    <div class="course-grid">
-      <div class="course-card">
-        <h3><i class="fas fa-graduation-cap"></i> Bachelor of Arts (B.A.)</h3>
-        <ul class="subject-list">
-          <li><i class="fas fa-check-circle"></i> Hindi Literature</li>
-          <li><i class="fas fa-check-circle"></i> English Literature</li>
-          <li><i class="fas fa-check-circle"></i> English Language</li>
-          <li><i class="fas fa-check-circle"></i> Sociology</li>
-          <li><i class="fas fa-check-circle"></i> Hindi Language</li>
-          <li><i class="fas fa-check-circle"></i> Economics</li>
-          <li><i class="fas fa-check-circle"></i> Education</li>
-          <li><i class="fas fa-check-circle"></i> Home Science</li>
-          <li><i class="fas fa-check-circle"></i> Sanskrit</li>
-        </ul>
+    <div class="course-card">
+      <h3><i class="fas fa-university"></i> Bachelor of Arts (B.A.)</h3>
+      
+      <!-- Code Style List with Graduation Icons -->
+      <ul class="subject-list">
+        <li><i class="fas fa-graduation-cap"></i> Hindi Literature</li>
+        <li><i class="fas fa-graduation-cap"></i> English Literature</li>
+        <li><i class="fas fa-graduation-cap"></i> Sanskrit</li>
+        <li><i class="fas fa-graduation-cap"></i> Sociology</li>
+        <li><i class="fas fa-graduation-cap"></i> Economics</li>
+        <li><i class="fas fa-graduation-cap"></i> Education</li>
+        <li><i class="fas fa-graduation-cap"></i> Home Science</li>
+        <li><i class="fas fa-graduation-cap"></i> Hindi Language(Minor/Foundation)</li>
+        <li><i class="fas fa-graduation-cap"></i> English Language(Minor/Foundation)</li>
+      </ul>
+
+      <div class="formal-notice">
+        <div class="notice-text">
+          <h5>Academic Regulation Note</h5>
+          <p>Please be advised that <strong>"Hindi Language"</strong> and <strong>"English Language"</strong> are offered exclusively as Foundation/Minor subjects. These subjects cannot be opted as a <strong>Major Subject</strong> under the current University guidelines.</p>
+        </div>
       </div>
     </div>
 
+    <!-- Restored Old Vocational Style -->
     <div class="vocational-box">
       <h4><i class="fas fa-tools"></i> Vocational & Co-Curricular Subjects</h4>
       <p>As per University Rules (MJPRU, Bareilly)</p>
@@ -105,21 +183,21 @@
   </div>
 
   <footer>
-    <div class="footer-content">
+    <div class="footer-grid">
       <div>
-        <h3>Contact Info</h3>
-        <p><i class="fas fa-phone"></i> +91-9411006547</p>
-        <p><i class="fas fa-envelope"></i> info@kashiramcollege.in</p>
-        <p><i class="fas fa-map-marker-alt"></i> Manpur, Baheri, Bareilly</p>
+        <h3 style="color: white; margin-bottom: 20px;">Contact Information</h3>
+        <p><i class="fas fa-phone" style="margin-right:10px;"></i> +91-9411006547</p>
+        <p><i class="fas fa-envelope" style="margin-right:10px;"></i> info@kashiramcollege.in</p>
+        <p><i class="fas fa-map-marker-alt" style="margin-right:10px;"></i> Manpur, Baheri, Bareilly</p>
       </div>
       <div>
-        <h3>Quick Links</h3>
-        <p><a href="admission.html" style="color: #ccc; text-decoration:none;">How to Apply</a></p>
-        <p><a href="notice.html" style="color: #ccc; text-decoration:none;">College Notices</a></p>
+        <h3 style="color: white; margin-bottom: 20px;">Institutional Links</h3>
+        <p><a href="admission.html" style="color: #94a3b8; text-decoration:none;">Admission Guidelines</a></p>
+        <p><a href="notice.html" style="color: #94a3b8; text-decoration:none;">University Circulars</a></p>
       </div>
     </div>
     <div class="copyright">
-      <p>© 2026 Kashiram Memorial College, Manpur Baheri (Bareilly)</p>
+      <p>© 2026 Kashiram Memorial College | Excellence in Rural Education</p>
     </div>
   </footer>
 
@@ -130,12 +208,9 @@
     menuBtn.addEventListener('click', () => {
       navLinks.classList.toggle('show');
       const icon = menuBtn.querySelector('i');
-      if (navLinks.classList.contains('show')) {
-        icon.classList.replace('fa-bars', 'fa-times');
-      } else {
-        icon.classList.replace('fa-times', 'fa-bars');
-      }
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
     });
   </script>
 </body>
-</html>  
+</html>

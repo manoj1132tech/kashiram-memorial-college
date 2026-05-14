@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><!DOCTYPE html>
-<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,14 +9,12 @@
     :root { --primary: #003366; --accent: #ffcc00; --white: #ffffff; }
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
     
-    /* Updated Background with Design */
     body { 
       background-color: #f0f2f5;
-      /* Soft Subtle Pattern Design */
       background-image: 
         radial-gradient(at 0% 0%, rgba(0, 51, 102, 0.03) 0px, transparent 50%),
         radial-gradient(at 100% 100%, rgba(255, 204, 0, 0.05) 0px, transparent 50%),
-        url("https://www.transparenttextures.com/patterns/cubes.png"); /* Light Cube Pattern */
+        url("https://www.transparenttextures.com/patterns/cubes.png");
       color: #333; 
       display: flex; 
       flex-direction: column; 
@@ -36,7 +32,7 @@
 
     .container { max-width: 1200px; margin: 30px auto; padding: 0 20px; display: flex; flex-direction: column; gap: 25px; flex: 1; }
 
-    /* Samarth Section - Added Depth */
+    /* University Registration - Now at Top */
     .samarth-container { 
       background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(5px);
@@ -50,10 +46,9 @@
     .samarth-btn { display: inline-block; background: #0056b3; color: white; padding: 14px 30px; text-decoration: none; border-radius: 50px; font-weight: bold; margin-top: 15px; transition: 0.4s; box-shadow: 0 4px 15px rgba(0,86,179,0.3); }
     .samarth-btn:hover { background: var(--primary); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,86,179,0.4); }
 
-    /* Content Wrapper */
-    .content-wrapper { display: grid; grid-template-columns: 1fr 380px; gap: 25px; align-items: start; }
+    /* Side by Side Layout for PC */
+    .content-wrapper { display: grid; grid-template-columns: 1fr 400px; gap: 25px; align-items: start; }
 
-    /* Form Styling - White with shadow to pop against background */
     .form-container { 
       background: white; 
       padding: 35px; 
@@ -70,7 +65,6 @@
     .submit-btn { width: 100%; padding: 15px; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 1rem; text-transform: uppercase; }
     .submit-btn:hover { background: var(--accent); color: #003366; transform: scale(1.01); }
 
-    /* Eligibility Sidebar Styling */
     .info-sidebar { 
       background: rgba(255, 251, 230, 0.9); 
       backdrop-filter: blur(5px);
@@ -84,7 +78,6 @@
     .info-sidebar ul li { margin-bottom: 15px; font-size: 0.92rem; position: relative; padding-left: 28px; line-height: 1.5; color: #555; }
     .info-sidebar ul li::before { content: "\f058"; font-family: "Font Awesome 5 Free"; font-weight: 900; position: absolute; left: 0; color: #2e7d32; }
 
-    /* Footer Styling */
     footer { background: #111; color: #aaa; padding: 50px 5% 20px; text-align: center; margin-top: 60px; }
     .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 30px; text-align: left; }
     .footer-content h3 { color: #fff; margin-bottom: 20px; font-size: 1.2rem; position: relative; }
@@ -98,7 +91,6 @@
       nav ul { display: none; flex-direction: column; position: absolute; top: 75px; left: 0; width: 100%; background: var(--primary); padding: 20px; text-align: center; }
       nav ul.show { display: flex; }
       .content-wrapper { grid-template-columns: 1fr; }
-      .info-sidebar { order: -1; }
     }
   </style>
 </head>
@@ -130,14 +122,17 @@
 
   <div class="container">
     
+    <!-- Step 1: University Portal (Now at Top) -->
     <div class="samarth-container">
       <h2><i class="fas fa-university"></i> University Registration (MJPRU)</h2>
       <p>All students must first register on the MJPRU Samarth Admission Portal to be eligible for college admission.</p>
       <a href="https://mjpruadm.samarth.edu.in/index.php" target="_blank" class="samarth-btn">GO TO SAMARTH PORTAL <i class="fas fa-external-link-alt"></i></a>
     </div>
 
+    <!-- Step 2: Form and Info Side-by-Side -->
     <div class="content-wrapper">
       
+      <!-- Enquiry Form -->
       <div class="form-container">
         <h2><i class="fas fa-edit"></i> Admission Enquiry Form</h2>
         <form action="https://formspree.io/f/mvzwdobr" method="POST">
@@ -184,6 +179,7 @@
         </form>
       </div>
 
+      <!-- Eligibility Side -->
       <div class="info-sidebar">
         <h3><i class="fas fa-info-circle"></i> Eligibility Criteria</h3>
         <ul>
@@ -204,177 +200,6 @@
 
     </div>
 
-  </div>
-
-  <footer>
-    <div class="footer-content">
-      <div>
-        <h3>Contact Us</h3>
-        <p><i class="fas fa-phone"></i> +91-9411006547</p>
-        <p><i class="fas fa-envelope"></i> info@kashiramcollege.in</p>
-        <p><i class="fas fa-map-marker-alt"></i> Manpur, Baheri, Bareilly</p>
-      </div>
-      <div class="footer-links">
-        <h3>Quick Links</h3>
-        <a href="notice.html">Latest Notices</a>
-        <a href="admission.html">Admission Policy</a>
-        <a href="gallery.html">Campus Tour</a>
-      </div>
-    </div>
-    <div class="copyright">
-      <p>© 2026 Kashiram Memorial College, Manpur Baheri (Bareilly)</p>
-      <p>Developed by Digital Architect Team</p>
-    </div>
-  </footer>
-
-  <script>
-    function toggleMenu() {
-      document.getElementById("nav-links").classList.toggle("show");
-    }
-  </script>
-</body>
-</html>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admissions 2026 | Kashiram Memorial College</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <style>
-    :root { --primary: #003366; --accent: #ffcc00; --white: #ffffff; }
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body { background: #f9f9f9; color: #333; display: flex; flex-direction: column; min-height: 100vh; }
-
-    header { background: var(--primary); color: var(--white); padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
-    .logo-section { display: flex; align-items: center; gap: 15px; }
-    .logo-img { width: 55px; height: 55px; background: #fff; border-radius: 50%; padding: 5px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-weight: bold; font-size: 10px; }
-    .college-info h1 { font-size: 1.1rem; color: var(--accent); line-height: 1.2; }
-    
-    nav ul { display: flex; list-style: none; gap: 15px; }
-    nav ul li a { color: var(--white); text-decoration: none; font-size: 0.85rem; text-transform: uppercase; font-weight: 500; transition: 0.3s; }
-    nav ul li a:hover { color: var(--accent); }
-    .menu-toggle { display: none; font-size: 1.8rem; cursor: pointer; color: var(--accent); }
-
-    .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; flex: 1; }
-
-    /* Form Styling */
-    .form-container { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); border-top: 5px solid var(--primary); }
-    .form-container h2 { margin-bottom: 20px; color: var(--primary); }
-    .form-group { margin-bottom: 15px; }
-    .form-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; }
-    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem; }
-    .submit-btn { width: 100%; padding: 12px; background: var(--primary); color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 10px; }
-    .submit-btn:hover { background: var(--accent); color: #000; }
-
-    /* Sidebar Styling */
-    .info-sidebar { background: #fffbe6; padding: 25px; border-radius: 12px; border: 1px dashed var(--primary); height: fit-content; }
-    .info-sidebar h3 { color: #d32f2f; margin-bottom: 15px; border-bottom: 2px solid #ddd; padding-bottom: 5px; }
-    .info-sidebar ul { list-style: none; }
-    .info-sidebar ul li { margin-bottom: 12px; font-size: 0.9rem; position: relative; padding-left: 20px; }
-    .info-sidebar ul li::before { content: "✔"; position: absolute; left: 0; color: green; font-weight: bold; }
-
-    /* Footer Styling */
-    footer { background: #1a1a1a; color: #ccc; padding: 40px 5% 20px; text-align: center; margin-top: 50px; }
-    .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 20px; text-align: left; }
-    .footer-content h3 { color: #fff; margin-bottom: 15px; font-size: 1.1rem; }
-    .footer-links a { color: #ccc; text-decoration: none; display: block; margin-bottom: 8px; font-size: 0.9rem; }
-    .footer-links a:hover { color: var(--accent); }
-    .copyright { border-top: 1px solid #333; padding-top: 20px; font-size: 0.8rem; }
-
-    @media (max-width: 1024px) {
-      .menu-toggle { display: block; }
-      nav ul { display: none; flex-direction: column; position: absolute; top: 75px; left: 0; width: 100%; background: var(--primary); padding: 20px; text-align: center; }
-      nav ul.show { display: flex; }
-      nav ul li { margin: 12px 0; }
-      .container { grid-template-columns: 1fr; }
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <div class="logo-section">
-      <img src="images/logo.png" alt="College Logo" style="width:60px;height:auto;" class="me-2">
-      <div class="college-info">
-        <h1>KASHIRAM MEMORIAL COLLEGE</h1>
-        <p>Manpur, Baheri, Bareilly (U.P.)</p>
-      </div>
-    </div>
-    <span class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></span>
-    <nav>
-      <ul id="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="admission.html">Admissions</a></li>
-         <li><a href="academics.html">Academics</a></li>
-        <li><a href="examination.html">Examinations</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="notice.html">Notices</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
- <div class="form-container">
-  <h2>Admission Enquiry Form</h2>
-  <form action="https://formspree.io/f/mvzwdobr" method="POST">
-    
-    <div class="form-group">
-      <label>Student's Full Name</label>
-      <input type="text" name="student_name" placeholder="Apna pura naam likhein" required>
-    </div>
-
-    <div class="form-group">
-      <label>Father's Name</label>
-      <input type="text" name="father_name" placeholder="Pitaji ka naam likhein" required>
-    </div>
-
-    <div class="form-group">
-      <label>Mobile Number (10 Digits)</label>
-      <input type="tel" name="phone" pattern="[6-9][0-9]{9}" title="Kripya 10-digit mobile number bharein" placeholder="e.g. 9876543210" required>
-    </div>
-
-    <div class="form-group">
-      <label>Course Interested In</label>
-      <select name="course" required>
-        <option value="">-- Select Course --</option>
-        <option value="BA">Bachelor of Arts (B.A.)</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label>12th Passing Year</label>
-      <select name="passing_year" required>
-        <option value="">-- Select Year --</option>
-        <option value="2026">2026</option>
-        <option value="2025">2025</option>
-        <option value="2024">2024</option>
-        <option value="2023">2023</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label>Permanent Address</label>
-      <textarea name="address" rows="3" placeholder="Village, Post, Tehsil, District" required></textarea>
-    </div>
-
-    <button type="submit" class="submit-btn">SUBMIT APPLICATION</button>
-  </form>
-</div>
-    <div class="info-sidebar">
-      <h3>Eligibility Criteria</h3>
-      <ul>
-        <li>12th Pass from any recognized Board.</li>
-        <li>Minimum 45% marks for Gen/OBC candidates.</li>
-        <li>Minimum 40% marks for SC/ST candidates.</li>
-      </ul>
-      <h3 style="margin-top: 20px;">Required Documents</h3>
-      <ul>
-        <li>High School & Intermediate Marksheets</li>
-        <li>Transfer Certificate (TC) & CC</li>
-        <li>Aadhar Card Photocopy</li>
-        <li>Passport size photos (6 nos.)</li>
-        <li>Caste & Income Certificate</li>
-      </ul>
-    </div>
   </div>
 
   <footer>

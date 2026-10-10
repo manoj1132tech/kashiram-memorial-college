@@ -1,0 +1,78 @@
+<form id="uploadForm">
+    <label>Student Name:</label><br>
+    <input type="text" id="studentName" required><br><br>
+
+    <label>Category:</label><br>
+    <select id="category" required>
+        <option value="OBC">OBC</option>
+        <option value="SC">SC</option>
+        <option value="ST">ST</option>
+        <option value="General">General</option>
+    </select><br><br>
+
+    <label>Select PDF File:</label><br>
+    <input type="file" id="pdfFile" accept=".pdf" required><br><br>
+
+    <button type="submit" id="submitBtn">Upload PDF</button>
+</form>
+
+<p id="statusMsg" style="margin-top: 10px; font-weight: bold;"></p>
+
+<script>
+document.getElementById('uploadForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    var name = document.getElementById('studentName').value;
+    var category = document.getElementById('category').value;
+    var fileInput = document.getElementById('pdfFile').files[0];
+    var statusMsg = document.getElementById('statusMsg');
+    var submitBtn = document.getElementById('submitBtn');
+    
+    if (!fileInput) {
+        alert('Kripya PDF file select karein.');
+        return;
+    }
+    
+    submitBtn.innerText = "Uploading...";
+    submitBtn.disabled = true;
+    
+    var reader = new FileReader();
+    reader.onload = function(event) {
+        var base64Data = event.target.result;
+        var payload = {
+            name: name,
+            category: category,
+            fileName: fileInput.name,
+            fileData: base64Data
+        };
+        
+        // Yahan apna Google Apps Script ka URL paste karein
+        var scriptURL = 'https://script.google.com/macros/s/AKfycby4wD-m4N-kjxsqCtor03SBcIeAREyzyEbmQy0VJ1y95HArGJAzBjRvsFtsxZbWp-L4kw/exec';
+        
+        fetch(scriptURL, {
+            method: 'POST',
+            body: JSON.stringify(payload)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.status === 'success') {
+                statusMsg.style.color = "green";
+                statusMsg.innerText = "PDF safaltapurvak upload ho gayi hai!";
+                document.getElementById('uploadForm').reset();
+            } else {
+                statusMsg.style.color = "red";
+                statusMsg.innerText = "Upload mein error aaya. Dobara koshish karein.";
+            }
+            submitBtn.innerText = "Upload PDF";
+            submitBtn.disabled = false;
+        })
+        .catch(error => {
+            statusMsg.style.color = "red";
+            statusMsg.innerText = "Koyi takniki samasya aai hai.";
+            submitBtn.innerText = "Upload PDF";
+            submitBtn.disabled = false;
+        });
+    };
+    reader.readAsDataURL(fileInput);
+});
+</script>

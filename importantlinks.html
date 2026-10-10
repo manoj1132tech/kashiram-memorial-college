@@ -37,17 +37,17 @@
 
     /* Modal / Popup Styling */
     .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center; }
-    .modal-content { background: #fff; padding: 30px; border-radius: 12px; width: 90%; max-width: 450px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); position: relative; animation: fadeIn 0.3s ease; }
+    .modal-content { background: #fff; padding: 25px 30px; border-radius: 12px; width: 90%; max-width: 450px; max-height: 90vh; overflow-y: auto; box-shadow: 0 10px 25px rgba(0,0,0,0.2); position: relative; animation: fadeIn 0.3s ease; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
     .close-btn { position: absolute; right: 20px; top: 15px; font-size: 1.5rem; cursor: pointer; color: #666; }
     .close-btn:hover { color: #000; }
-    .modal-content h3 { color: var(--primary-color); margin-bottom: 20px; text-align: center; }
-    .form-group { margin-bottom: 15px; text-align: left; }
-    .form-group label { display: block; font-size: 0.9rem; font-weight: 600; color: #333; margin-bottom: 5px; }
-    .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 0.95rem; }
-    .submit-upload-btn { background: var(--primary-color); color: var(--text-light); border: none; width: 100%; padding: 12px; border-radius: 6px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: 0.2s; }
+    .modal-content h3 { color: var(--primary-color); margin-bottom: 15px; text-align: center; }
+    .form-group { margin-bottom: 12px; text-align: left; }
+    .form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: #333; margin-bottom: 4px; }
+    .form-group input, .form-group select { width: 100%; padding: 8px 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 0.9rem; }
+    .submit-upload-btn { background: var(--primary-color); color: var(--text-light); border: none; width: 100%; padding: 10px; border-radius: 6px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: 0.2s; margin-top: 5px; }
     .submit-upload-btn:hover { background: #002244; }
-    #statusMsg { margin-top: 15px; text-align: center; font-size: 0.9rem; font-weight: 600; }
+    #statusMsg { margin-top: 10px; text-align: center; font-size: 0.85rem; font-weight: 600; }
 
     /* Footer */
     footer { background: #0f172a; color: #94a3b8; padding: 50px 5% 20px; margin-top: auto; }
@@ -83,7 +83,6 @@
   <div class="container">
     <h2 class="section-title">सरकारी और प्रशासनिक पोर्टल</h2>
     <div class="links-grid">
-      <!-- Scholarship Form Upload Card (Added Here) -->
       <div class="link-card" id="openUploadModal">
         <div class="card-icon"><i class="fas fa-cloud-upload-alt"></i></div>
         <h3>Scholarship Form Upload</h3>
@@ -115,16 +114,29 @@
           <label>Student Name (पूरा नाम):</label>
           <input type="text" id="studentName" placeholder="Enter full name" required>
         </div>
+        
         <div class="form-group">
-          <label>Category (वर्ग):</label>
+          <label>Class (कक्षा):</label>
+          <select id="studentClass" required>
+            <option value="">-- Select Class --</option>
+            <option value="BA_1st_Year">BA 1st Year</option>
+            <option value="BA_2nd_Year">BA 2nd Year</option>
+            <option value="BA_3rd_Year">BA 3rd Year</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Category / Minority (वर्ग / अल्पसंख्यक):</label>
           <select id="category" required>
             <option value="">-- Select Category --</option>
             <option value="OBC">OBC</option>
             <option value="SC">SC</option>
             <option value="ST">ST</option>
+            <option value="Minority">Minority (अल्पसंख्यक)</option>
             <option value="General">General</option>
           </select>
         </div>
+
         <div class="form-group">
           <label>Upload PDF File:</label>
           <input type="file" id="pdfFile" accept=".pdf" required>
@@ -145,14 +157,13 @@
       <div>
         <h3 style="color:white; margin-bottom:15px;">Institutional Links</h3>
         <p><a href="admission.html" style="color: #94a3b8; text-decoration:none;">Admission Guidelines</a></p>
-        <p><a href="notice.html" style="color: #94a3b8; text-decoration:none;">University Circulars</a></p>
+        <p><a href="notice.html" style="color: #94a3b8; text-decoration:none;">UniversityCirculars</a></p>
       </div>
     </div>
     <div class="copyright">© 2026 Kashiram Memorial College | Excellence in Rural Education</div>
   </footer>
 
   <script>
-    // Mobile menu toggle
     const menuBtn = document.getElementById('mobile-menu-btn');
     const navLinks = document.getElementById('nav-links');
     menuBtn.addEventListener('click', () => {
@@ -162,7 +173,6 @@
       icon.classList.toggle('fa-times');
     });
 
-    // Modal popup logic
     const modal = document.getElementById('uploadModal');
     const openBtn = document.getElementById('openUploadModal');
     const closeBtn = document.getElementById('closeModal');
@@ -185,11 +195,11 @@
       }
     });
 
-    // Handle Upload Script Integration
     document.getElementById('uploadForm').addEventListener('submit', function(e) {
       e.preventDefault();
       
       var name = document.getElementById('studentName').value;
+      var studentClass = document.getElementById('studentClass').value;
       var category = document.getElementById('category').value;
       var fileInput = document.getElementById('pdfFile').files[0];
       var statusMsg = document.getElementById('statusMsg');
@@ -210,15 +220,14 @@
         var base64Data = event.target.result;
         var payload = {
           name: name,
+          studentClass: studentClass,
           category: category,
           fileName: fileInput.name,
           fileData: base64Data
         };
         
-        // Aapka Web App URL
-        var scriptURL = 'https://script.google.com/macros/s/AKfycby4wD-m4N-kjxsqCtor03SBcIeAREyzyEbmQy0VJ1y95HArGJAzBjRvsFtsxZbWp-L4kw/exec';
+        var scriptURL = 'https://script.google.com/macros/s/AKfycbw_BvVkgoVZH-qVnRmEjtsqFTPtPhELWCtDD-NdSmPNMKB32-vT2ybyhBjbQoMB2l-SMw/exec';
         
-        // Note: Google Apps Script CORS policy ke chalte 'no-cors' mode ya standard fetch handle kiya jata hai
         fetch(scriptURL, {
             method: 'POST',
             body: JSON.stringify(payload)
@@ -241,7 +250,6 @@
             submitBtn.disabled = false;
         })
         .catch(error => {
-            // Kabhi-kabhi CORS ke karan catch block mein ja sakta hai jabki file drive mein chali jati hai
             statusMsg.style.color = "green";
             statusMsg.innerText = "PDF safaltapurvak upload ho gayi hai!";
             document.getElementById('uploadForm').reset();

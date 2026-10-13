@@ -32,7 +32,7 @@
     .upload-card-wrapper {
       background: #ffffff;
       width: 100%;
-      max-width: 500px;
+      max-width: 520px;
       border-radius: 12px;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
       overflow: hidden;
@@ -151,6 +151,32 @@
       font-weight: 600;
       cursor: pointer;
     }
+
+    /* Download Results Style */
+    .result-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 12px;
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .result-card p { font-size: 0.85rem; color: var(--text-dark); word-break: break-all; }
+    .btn-group { display: flex; gap: 8px; }
+    .dl-btn {
+      flex: 1;
+      padding: 8px;
+      border-radius: 6px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .dl-btn-view { background: #e0f2fe; color: #0284c7; }
+    .dl-btn-down { background: var(--primary-color); color: white; }
   </style>
 </head>
 <body>
@@ -223,19 +249,23 @@
 
       <!-- TAB 2: DOWNLOAD / RETRIEVE FORM -->
       <div id="downloadTab" class="tab-content">
-        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 15px;">Yadi aapko apna jama kiya hua form ya receipt chahiye, toh Google Drive se direct access kar sakte hain ya college office se sampark karein.</p>
+        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 15px;">Apna Application ID (jaise: <b>KRMC_123456</b>) ya Apna Naam daal kar form dhoondhein aur download karein:</p>
         <div class="form-group">
-          <label><i class="fas fa-search"></i> Enter Application ID or Name:</label>
-          <input type="text" id="searchQuery" placeholder="e.g. KRMC_123456">
+          <label><i class="fas fa-search"></i> Enter Application ID or Student Name:</label>
+          <input type="text" id="searchQuery" placeholder="e.g. KRMC_123456 ya Rahul">
         </div>
-        <button type="button" class="submit-btn" onclick="alert('Aap apna form Google Drive ke folder se direct download kar sakte hain. Office se sampark karein.')">
-          <i class="fas fa-download"></i> Search Form
+        <button type="button" class="submit-btn" id="searchBtn" onclick="searchForm()">
+          <i class="fas fa-search"></i> Search Form
         </button>
+
+        <div id="searchResults" style="margin-top: 15px;"></div>
       </div>
     </div>
   </div>
 
   <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzoFowaM3hb2QyXNqbl-MKgFUKea-Qy4IV2jLTy0dziUX4O7tHHW_OesCbI0UBYWMw3Iw/exec';
+
     function switchTab(tabId, btn) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
@@ -243,6 +273,7 @@
       btn.classList.add('active');
     }
 
+    // Upload Form Handling
     document.getElementById('scholarshipUploadForm').addEventListener('submit', function(e) {
       e.preventDefault();
       
@@ -267,8 +298,6 @@
           fileData: event.target.result
         };
         
-        var scriptURL = 'https://script.google.com/macros/s/AKfycbyMhRzPLrCnnJrSHF9M2-udcNRl2tX61sk_nLZD_5a3l9d6fj8voz1b7pELLpn2cwA9vg/exec';
-        
         fetch(scriptURL, { method: 'POST', body: JSON.stringify(payload) })
         .then(response => response.json())
         .then(data => {
@@ -281,22 +310,63 @@
                 document.getElementById('receiptBox').style.display = 'block';
             } else {
                 alert('Upload failed: ' + data.message);
-                submitBtn.innerHTML = 'Submit & Get Proof';
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit & Get Proof';
                 submitBtn.disabled = false;
             }
         })
         .catch(error => {
-            // Fallback success simulation incase of CORS quirk
-            document.getElementById('scholarshipUploadForm').style.display = 'none';
-            document.getElementById('rName').innerText = name;
-            document.getElementById('rClass').innerText = studentClass;
-            document.getElementById('rCategory').innerText = category;
-            document.getElementById('rAppId').innerText = "KRMC_" + Math.floor(100000 + Math.random() * 900000);
-            document.getElementById('receiptBox').style.display = 'block';
+            alert('Technial error. Kripya punah prayas karein.');
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit & Get Proof';
+            submitBtn.disabled = false;
         });
       };
       reader.readAsDataURL(fileInput);
     });
+
+    // REAL DOWNLOAD SEARCH FUNCTION
+    function searchForm() {
+      var query = document.getElementById('searchQuery').value.trim();
+      var resultsDiv = document.getElementById('searchResults');
+      var searchBtn = document.getElementById('searchBtn');
+
+      if (!query) {
+        alert('Kripya Application ID ya Name daalein.');
+        return;
+      }
+
+      searchBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Searching...';
+      searchBtn.disabled = true;
+      resultsDiv.innerHTML = '';
+
+      fetch(scriptURL + '?q=' + encodeURIComponent(query))
+      .then(res => res.json())
+      .then(data => {
+        searchBtn.innerHTML = '<i class="fas fa-search"></i> Search Form';
+        searchBtn.disabled = false;
+
+        if (data.status === 'success' && data.results.length > 0) {
+          data.results.forEach(file => {
+            var card = document.createElement('div');
+            card.className = 'result-card';
+            card.innerHTML = `
+              <p><b>File Name:</b> ${file.name}</p>
+              <div class="btn-group">
+                <a href="${file.url}" target="_blank" class="dl-btn dl-btn-view"><i class="fas fa-eye"></i> View PDF</a>
+                <a href="${file.downloadUrl}" target="_blank" class="dl-btn dl-btn-down"><i class="fas fa-download"></i> Download</a>
+              </div>
+            `;
+            resultsDiv.appendChild(card);
+          });
+        } else {
+          resultsDiv.innerHTML = '<p style="color: red; text-align: center; font-size: 0.85rem;">Koi form nahi mila. Sahi App ID ya Naam daalein.</p>';
+        }
+      })
+      .catch(err => {
+        searchBtn.innerHTML = '<i class="fas fa-search"></i> Search Form';
+        searchBtn.disabled = false;
+        resultsDiv.innerHTML = '<p style="color: red; text-align: center; font-size: 0.85rem;">Searching mein dikkat aai. Dobara try karein.</p>';
+      });
+    }
   </script>
 </body>
 </html>

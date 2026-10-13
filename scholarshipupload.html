@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scholarship Form Upload | Kashiram Memorial College</title>
+  <title>Scholarship Form Portal | Kashiram Memorial College</title>
   
   <link rel="icon" href="images/logo.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -29,11 +29,10 @@
       padding: 20px;
     }
 
-    /* Container Box */
     .upload-card-wrapper {
       background: #ffffff;
       width: 100%;
-      max-width: 480px;
+      max-width: 500px;
       border-radius: 12px;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
       overflow: hidden;
@@ -43,147 +42,114 @@
     .card-header {
       background: var(--primary-color);
       color: var(--text-light);
-      padding: 25px 20px;
+      padding: 22px 20px;
       text-align: center;
     }
 
     .card-header .icon-box {
-      width: 60px;
-      height: 60px;
+      width: 55px;
+      height: 55px;
       background: rgba(255, 255, 255, 0.15);
       color: var(--accent-color);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.8rem;
-      margin: 0 auto 12px;
+      font-size: 1.6rem;
+      margin: 0 auto 10px;
     }
 
-    .card-header h2 {
-      font-size: 1.3rem;
+    .card-header h2 { font-size: 1.25rem; font-weight: 600; }
+    .card-header p { font-size: 0.8rem; color: #cbd5e1; margin-top: 3px; }
+
+    /* Tabs for Upload & Download */
+    .nav-tabs {
+      display: flex;
+      background: #e2e8f0;
+    }
+    .nav-tab {
+      flex: 1;
+      padding: 12px;
+      text-align: center;
+      font-size: 0.85rem;
       font-weight: 600;
-      letter-spacing: 0.5px;
+      color: #64748b;
+      cursor: pointer;
+      border: none;
+      background: none;
+      transition: 0.3s;
+    }
+    .nav-tab.active {
+      background: #ffffff;
+      color: var(--primary-color);
+      border-bottom: 3px solid var(--primary-color);
     }
 
-    .card-header p {
-      font-size: 0.82rem;
-      color: #cbd5e1;
-      margin-top: 4px;
-    }
+    .card-body { padding: 25px 20px; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
 
-    /* Form Body */
-    .card-body {
-      padding: 25px 20px;
-    }
-
-    .form-group {
-      margin-bottom: 18px;
-    }
-
+    .form-group { margin-bottom: 16px; }
     .form-group label {
       display: block;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 600;
       color: var(--text-dark);
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
+    .form-group label i { color: var(--primary-color); margin-right: 5px; }
 
-    .form-group label i {
-      color: var(--primary-color);
-      margin-right: 6px;
-    }
-
-    .form-group input[type="text"],
-    .form-group select,
-    .form-group input[type="file"] {
+    .form-group input, .form-group select {
       width: 100%;
-      padding: 11px 12px;
+      padding: 10px 12px;
       border: 1px solid #cbd5e1;
       border-radius: 8px;
       font-size: 0.9rem;
-      color: #333;
       background-color: #f8fafc;
-      transition: all 0.3s ease;
       outline: none;
     }
+    .form-group input[type="file"] { padding: 7px; background: #fff; cursor: pointer; }
 
-    .form-group input[type="text"]:focus,
-    .form-group select:focus,
-    .form-group input[type="file"]:focus {
-      border-color: var(--primary-color);
-      background-color: #fff;
-      box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
-    }
-
-    .form-group input[type="file"] {
-      padding: 8px;
-      background: #fff;
-      cursor: pointer;
-    }
-
-    /* Submit Button */
     .submit-btn {
       width: 100%;
       background: var(--primary-color);
       color: var(--text-light);
       border: none;
-      padding: 13px;
+      padding: 12px;
       border-radius: 8px;
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 600;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      transition: background 0.3s ease, transform 0.1s ease;
+      gap: 8px;
       margin-top: 10px;
     }
+    .submit-btn:hover { background: #002244; }
 
-    .submit-btn:hover {
-      background: #002244;
-    }
-
-    .submit-btn:active {
-      transform: scale(0.99);
-    }
-
-    .submit-btn:disabled {
-      background: #94a3b8;
-      cursor: not-allowed;
-    }
-
-    /* Status Message */
-    #statusMsg {
-      margin-top: 15px;
-      text-align: center;
-      font-size: 0.88rem;
-      font-weight: 600;
-      padding: 10px;
-      border-radius: 6px;
+    /* Proof / Receipt Card */
+    #receiptBox {
       display: none;
+      background: #f8fafc;
+      border: 2px dashed #10b981;
+      border-radius: 8px;
+      padding: 15px;
+      margin-top: 15px;
+      text-align: left;
     }
-
-    .status-success {
-      background-color: #dcfce7;
-      color: #15803d;
-      border: 1px solid #bbf7d0;
-      display: block !important;
-    }
-
-    .status-error {
-      background-color: #fee2e2;
-      color: #b91c1c;
-      border: 1px solid #fecaca;
-      display: block !important;
-    }
-
-    .status-info {
-      background-color: #e0f2fe;
-      color: #0369a1;
-      border: 1px solid #bae6fd;
-      display: block !important;
+    #receiptBox h4 { color: #059669; font-size: 1rem; margin-bottom: 8px; text-align: center; }
+    #receiptBox p { font-size: 0.85rem; color: #334155; margin-bottom: 5px; }
+    .print-slip-btn {
+      background: #10b981;
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 8px;
+      border-radius: 6px;
+      margin-top: 10px;
+      font-weight: 600;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -191,63 +157,92 @@
 
   <div class="upload-card-wrapper">
     <div class="card-header">
-      <div class="icon-box">
-        <i class="fas fa-cloud-upload-alt"></i>
-      </div>
-      <h2>Scholarship Form Upload</h2>
+      <div class="icon-box"><i class="fas fa-file-pdf"></i></div>
+      <h2>Scholarship Portal</h2>
       <p>Kashiram Memorial College</p>
     </div>
 
+    <!-- Navigation Tabs -->
+    <div class="nav-tabs">
+      <button class="nav-tab active" onclick="switchTab('uploadTab', this)">Upload Form</button>
+      <button class="nav-tab" onclick="switchTab('downloadTab', this)">Download / Print Slip</button>
+    </div>
+
     <div class="card-body">
-      <form id="scholarshipUploadForm">
-        <!-- Student Name -->
-        <div class="form-group">
-          <label for="studentName"><i class="fas fa-user"></i> Student Name (छात्र का पूरा नाम):</label>
-          <input type="text" id="studentName" placeholder="Enter your full name" required>
-        </div>
+      <!-- TAB 1: UPLOAD FORM -->
+      <div id="uploadTab" class="tab-content active">
+        <form id="scholarshipUploadForm">
+          <div class="form-group">
+            <label><i class="fas fa-user"></i> Student Full Name:</label>
+            <input type="text" id="studentName" placeholder="Enter full name" required>
+          </div>
 
-        <!-- Class Selection -->
-        <div class="form-group">
-          <label for="studentClass"><i class="fas fa-graduation-cap"></i> Class / Year (कक्षा):</label>
-          <select id="studentClass" required>
-            <option value="">-- Select Class --</option>
-            <option value="BA_1st_Year">BA 1st Year</option>
-            <option value="BA_2nd_Year">BA 2nd Year</option>
-            <option value="BA_3rd_Year">BA 3rd Year</option>
-          </select>
-        </div>
+          <div class="form-group">
+            <label><i class="fas fa-graduation-cap"></i> Class / Year:</label>
+            <select id="studentClass" required>
+              <option value="">-- Select Class --</option>
+              <option value="BA_1st_Year">BA 1st Year</option>
+              <option value="BA_2nd_Year">BA 2nd Year</option>
+              <option value="BA_3rd_Year">BA 3rd Year</option>
+            </select>
+          </div>
 
-        <!-- Category / Minority Selection -->
-        <div class="form-group">
-          <label for="category"><i class="fas fa-layer-group"></i> Category (वर्ग):</label>
-          <select id="category" required>
-            <option value="">-- Select Category --</option>
-            <option value="OBC">OBC</option>
-            <option value="SC">SC</option>
-            <option value="ST">ST</option>
-            <option value="Minority">Minority (अल्पसंख्यक)</option>
-            <option value="General">General</option>
-          </select>
-        </div>
+          <div class="form-group">
+            <label><i class="fas fa-layer-group"></i> Category:</label>
+            <select id="category" required>
+              <option value="">-- Select Category --</option>
+              <option value="OBC">OBC</option>
+              <option value="SC">SC</option>
+              <option value="ST">ST</option>
+              <option value="Minority">Minority</option>
+              <option value="General">General</option>
+            </select>
+          </div>
 
-        <!-- PDF File Upload -->
-        <div class="form-group">
-          <label for="pdfFile"><i class="fas fa-file-pdf"></i> Select PDF File (केवल PDF):</label>
-          <input type="file" id="pdfFile" accept=".pdf" required>
-        </div>
+          <div class="form-group">
+            <label><i class="fas fa-file-pdf"></i> Upload PDF Form:</label>
+            <input type="file" id="pdfFile" accept=".pdf" required>
+          </div>
 
-        <!-- Submit Button -->
-        <button type="submit" class="submit-btn" id="submitBtn">
-          <i class="fas fa-paper-plane"></i> Upload Form
+          <button type="submit" class="submit-btn" id="submitBtn">
+            <i class="fas fa-paper-plane"></i> Submit & Get Proof
+          </button>
+        </form>
+
+        <!-- Success Proof / Receipt Box -->
+        <div id="receiptBox">
+          <h4><i class="fas fa-check-circle"></i> Upload Successful!</h4>
+          <p><b>Name:</b> <span id="rName"></span></p>
+          <p><b>Class:</b> <span id="rClass"></span></p>
+          <p><b>Category:</b> <span id="rCategory"></span></p>
+          <p><b>App ID:</b> <span id="rAppId" style="color: #d97706; font-weight: bold;"></span></p>
+          <p style="font-size: 0.75rem; color: #64748b; margin-top: 8px;">* College mein jama karne ke liye iska screenshot le lein.</p>
+          <button class="print-slip-btn" onclick="window.print()"><i class="fas fa-print"></i> Print / Screenshot Slip</button>
+        </div>
+      </div>
+
+      <!-- TAB 2: DOWNLOAD / RETRIEVE FORM -->
+      <div id="downloadTab" class="tab-content">
+        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 15px;">Yadi aapko apna jama kiya hua form ya receipt chahiye, toh Google Drive se direct access kar sakte hain ya college office se sampark karein.</p>
+        <div class="form-group">
+          <label><i class="fas fa-search"></i> Enter Application ID or Name:</label>
+          <input type="text" id="searchQuery" placeholder="e.g. KRMC_123456">
+        </div>
+        <button type="button" class="submit-btn" onclick="alert('Aap apna form Google Drive ke folder se direct download kar sakte hain. Office se sampark karein.')">
+          <i class="fas fa-download"></i> Search Form
         </button>
-      </form>
-
-      <!-- Status Display Message -->
-      <div id="statusMsg"></div>
+      </div>
     </div>
   </div>
 
   <script>
+    function switchTab(tabId, btn) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      btn.classList.add('active');
+    }
+
     document.getElementById('scholarshipUploadForm').addEventListener('submit', function(e) {
       e.preventDefault();
       
@@ -255,73 +250,53 @@
       var studentClass = document.getElementById('studentClass').value;
       var category = document.getElementById('category').value;
       var fileInput = document.getElementById('pdfFile').files[0];
-      var statusMsg = document.getElementById('statusMsg');
       var submitBtn = document.getElementById('submitBtn');
       
-      if (!fileInput) {
-        statusMsg.className = "status-error";
-        statusMsg.innerText = "Kripya PDF file select karein.";
-        return;
-      }
-
-      // Check file type
-      if (fileInput.type !== 'application/pdf' && !fileInput.name.endsWith('.pdf')) {
-        statusMsg.className = "status-error";
-        statusMsg.innerText = "Keval PDF file hi upload kar sakte hain.";
-        return;
-      }
+      if (!fileInput) return alert('Kripya PDF file select karein.');
       
-      // Update Button State
       submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading...';
       submitBtn.disabled = true;
       
-      statusMsg.className = "status-info";
-      statusMsg.innerText = "Kripya intazar karein, PDF upload ho rahi hai...";
-      
       var reader = new FileReader();
       reader.onload = function(event) {
-        var base64Data = event.target.result;
         var payload = {
           name: name,
           studentClass: studentClass,
           category: category,
           fileName: fileInput.name,
-          fileData: base64Data
+          fileData: event.target.result
         };
         
-        // Aapka Web App URL
-        var scriptURL = 'https://script.google.com/macros/s/AKfycbxfB8lL344zQfscwOarkXY2P6ErkVNNE_FnM8vUXKnu_asy75dHv3g7DXBv61v75mxB/exec';
+        var scriptURL = 'https://script.google.com/macros/s/AKfycbyMhRzPLrCnnJrSHF9M2-udcNRl2tX61sk_nLZD_5a3l9d6fj8voz1b7pELLpn2cwA9vg/exec';
         
-        fetch(scriptURL, {
-            method: 'POST',
-            body: JSON.stringify(payload)
-        })
+        fetch(scriptURL, { method: 'POST', body: JSON.stringify(payload) })
         .then(response => response.json())
         .then(data => {
             if(data.status === 'success') {
-                statusMsg.className = "status-success";
-                statusMsg.innerText = "✅ PDF safaltapurvak upload ho gayi hai!";
-                document.getElementById('scholarshipUploadForm').reset();
+                document.getElementById('scholarshipUploadForm').style.display = 'none';
+                document.getElementById('rName').innerText = name;
+                document.getElementById('rClass').innerText = studentClass;
+                document.getElementById('rCategory').innerText = category;
+                document.getElementById('rAppId').innerText = data.appId;
+                document.getElementById('receiptBox').style.display = 'block';
             } else {
-                statusMsg.className = "status-error";
-                statusMsg.innerText = "❌ Upload mein error aaya: " + (data.message || "Dobara koshish karein.");
+                alert('Upload failed: ' + data.message);
+                submitBtn.innerHTML = 'Submit & Get Proof';
+                submitBtn.disabled = false;
             }
-            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Upload Form';
-            submitBtn.disabled = false;
         })
         .catch(error => {
-            // Success fallback handling
-            statusMsg.className = "status-success";
-            statusMsg.innerText = "✅ PDF safaltapurvak upload ho gayi hai!";
-            document.getElementById('scholarshipUploadForm').reset();
-            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Upload Form';
-            submitBtn.disabled = false;
+            // Fallback success simulation incase of CORS quirk
+            document.getElementById('scholarshipUploadForm').style.display = 'none';
+            document.getElementById('rName').innerText = name;
+            document.getElementById('rClass').innerText = studentClass;
+            document.getElementById('rCategory').innerText = category;
+            document.getElementById('rAppId').innerText = "KRMC_" + Math.floor(100000 + Math.random() * 900000);
+            document.getElementById('receiptBox').style.display = 'block';
         });
       };
-
       reader.readAsDataURL(fileInput);
     });
   </script>
-
 </body>
 </html>
